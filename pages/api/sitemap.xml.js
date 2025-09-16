@@ -126,8 +126,8 @@ export default async function handler(req, res) {
       { path: '/link-building-blog/', lastModified: today, changeFrequency: 'daily', priority: '0.9' },
       { path: '/case-studies/', lastModified: today, changeFrequency: 'monthly', priority: '0.8' },
       { path: '/book-a-call/', lastModified: today, changeFrequency: 'monthly', priority: '0.8' },
-      { path: '/case-studies/saas/', lastModified: today, changeFrequency: 'monthly', priority: '0.7' },
-      { path: '/case-studies/fintech/', lastModified: today, changeFrequency: 'monthly', priority: '0.7' },
+      { path: '/case-studies/182-traffic-growth-and-195-increase-in-organic-keywords-in-18-months/', lastModified: today, changeFrequency: 'monthly', priority: '0.7' },
+      { path: '/case-studies/the-24-link-strategy-that-drove-48-traffic-growth/', lastModified: today, changeFrequency: 'monthly', priority: '0.7' },
     ];
 
     // Add pagination pages for blog
