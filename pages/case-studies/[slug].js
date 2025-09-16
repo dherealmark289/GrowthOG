@@ -250,10 +250,10 @@ export default function CaseStudy({ caseStudy }) {
 }
 
 export async function getStaticPaths() {
-  // Define the paths for the case studies
+  // Use the exact WordPress slugs so URLs match headless site
   const paths = [
-    { params: { slug: 'saas' } },
-    { params: { slug: 'fintech' } },
+    { params: { slug: '182-traffic-growth-and-195-increase-in-organic-keywords-in-18-months' } },
+    { params: { slug: 'the-24-link-strategy-that-drove-48-traffic-growth' } },
   ];
 
   return { 
@@ -264,8 +264,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    // For now, we'll just use hardcoded data based on the slug
-    if (params.slug === 'saas') {
+    // For now, map WP slugs to our hardcoded content blocks
+    if (params.slug === '182-traffic-growth-and-195-increase-in-organic-keywords-in-18-months') {
       return {
         props: {
           caseStudy: {
@@ -384,7 +384,7 @@ export async function getStaticProps({ params }) {
           }
         }
       };
-    } else if (params.slug === 'fintech') {
+    } else if (params.slug === 'the-24-link-strategy-that-drove-48-traffic-growth') {
       return {
         props: {
           caseStudy: {
