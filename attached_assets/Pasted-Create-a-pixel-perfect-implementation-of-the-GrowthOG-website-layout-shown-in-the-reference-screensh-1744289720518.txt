@@ -1,0 +1,64 @@
+Create a pixel-perfect implementation of the GrowthOG website layout shown in the reference screenshots, with these specific requirements:
+
+1. Main Navigation Bar:
+   - Keep the main navigation (Services, Pricing, Resources dropdown, About Us) exactly as is
+   - The Resources dropdown in the navigation must:
+     * Be clickable itself and redirect to "/resources/" when clicked
+     * Contain exactly 2 dropdown items:
+       - "Case Studies" linking to "/case-studies/"
+       - "Blog" linking to "/link-building-blog/"
+   - Maintain "Access Dashboard" and "Book a Strategy Call" buttons with current styling and functionality
+
+2. Left Sidebar Navigation:
+   - Implement the dark sidebar with "Blog" and "Tools" sections exactly as shown in screenshots
+   - The sidebar must appear exactly as shown in the images with proper spacing and styling
+   - Under "Blog" section: maintain current functionality and routing
+   - Under "Tools" section, include with exact styling and functionality:
+     * Link Audit Tool (with proper routing)
+     * Link Building ROI Calculator (with proper routing)
+     * Campaign Builder (with external link icon) - MUST link directly to the dashboard
+
+3. Resources Page Layout:
+   - Match the heading "Resources" with subtitle "Expert insights on SEO, link-building, and SaaS growth"
+   - Implement "Link Building Tools" section with the cards layout exactly as shown:
+     * Link Audit Tool card with chain icon
+     * Link Building ROI Calculator card with calculator icon
+     * Campaign Builder card with graph icon
+     * "More Tools Coming Soon" card with plus icon
+   - All spacing, margins, and padding must exactly match the screenshots
+
+4. Card Styling:
+   - Maintain the white cards with subtle borders
+   - Keep exact padding, margins and spacing between elements
+   - Implement hover states if present in the current functionality
+   - Ensure active state appears as shown in screenshot 2 (ROI Calculator card has thicker border)
+
+5. Blog Resources Section:
+   - Implement the filter bar with all dropdown filters (All Topics, SaaS Stage, Content Type, Date) exactly as shown
+   - Include search functionality with the search field styled as shown
+   - Match the "Featured Resource" banner with download button
+   - Implement the 6-column grid of blog post cards with:
+     * Category tag at top
+     * Title in proper font size/weight
+     * Excerpt text
+     * Author with image
+     * Date and read time
+   - Maintain exact spacing between cards as shown in screenshot 3
+
+6. Functionality Requirements:
+   - DO NOT change any functionality of the website
+   - The "Campaign Builder" in the tools sidebar MUST link to the dashboard
+   - ALL existing functionality should be maintained exactly as is
+   - All filters, search, pagination, and interactive elements should remain fully functional
+   - Maintain all current hover states, active states, and animations
+
+7. Responsive Behavior:
+   - Maintain all existing responsive behaviors and breakpoints
+   - Ensure the sidebar collapses appropriately on mobile devices
+   - Keep all current mobile menu functionality
+
+8. Pagination:
+   - Implement the pagination at the bottom exactly as shown (1-6 numbered buttons)
+   - Maintain current pagination functionality
+
+This implementation should be a 1:1 visual match to the screenshots while preserving ALL functionality of the current application. The goal is to create an identical visual representation without changing any behavior or functionality of the existing site. Pay particular attention to the left sidebar with "Blog" and "Tools" sections, ensuring they appear and function exactly as shown in the screenshots.

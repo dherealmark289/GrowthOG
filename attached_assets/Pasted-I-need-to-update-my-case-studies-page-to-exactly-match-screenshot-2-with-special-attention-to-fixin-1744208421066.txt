@@ -1,0 +1,117 @@
+I need to update my case studies page to exactly match screenshot 2, with special attention to fixing the current spacing and alignment issues where text and icons are overlapping. Please implement these precise specifications:
+
+1. PAGE STRUCTURE & HEADER:
+   - Main container: 100% width with 32px horizontal padding
+   - Border: 1px solid #E5E7EB with 12px border radius
+   - Container max-width: 1280px, centered
+   - "Case Studies" heading: font-size: 36px, font-weight: 800, color: #000000
+   - Subheading "Real results for B2B SaaS companies at every growth stage": font-size: 16px, font-weight: 400, color: #6B7280
+   - Spacing between heading and subheading: 8px
+   - Spacing between subheading and filter bar: 24px
+
+2. FILTER BAR - FIX SPACING:
+   - Single unified bar with joined components
+   - Height: 48px with 1px solid #E5E7EB border and 6px border radius
+   - Left section: "Filter by:" label - font-size: 14px, font-weight: 600, color: #000000, padding-left: 16px
+   - Four dropdowns: "Company Stage," "Link Strategy," "Industry," "Results"
+   - Dropdown styling: 
+     * Font-size: 14px, color: #000000
+     * Border-right: 1px solid #E5E7EB between dropdowns
+     * Small down-arrow icon for each dropdown
+     * Proper padding: 12px 16px for each dropdown
+     * Fix proper alignment of dropdown arrow icons (8px from text)
+   - Right section: "Reset Filters" button - light gray background, 14px font, padding: 0 16px
+
+3. TABLE HEADER - ENSURE PROPER ALIGNMENT:
+   - Full-width table with 5 columns: Client, Traffic Increase, Links Built, Timeframe, Actions
+   - Background-color: #F9FAFB (very light gray)
+   - Border: 1px solid #E5E7EB
+   - Font-size: 14px, font-weight: 600, color: #000000
+   - Text alignment: Left for "Client", center for others
+   - Padding: 12px 16px
+   - Ensure header text is properly centered both vertically and horizontally within cells
+
+4. CLIENT COLUMN STYLING - FIX LAYOUT:
+   - Each client has a colored square with white 2-3 letter abbreviation
+   - Square size: 32px × 32px with 4px border radius
+   - Company name: 16px, font-weight: 600, black
+   - Industry type: 13px, color: #6B7280 (medium gray)
+   - Layout: Horizontal with 12px gap between square and text
+   - Vertical spacing: 4px between company name and industry type
+   - Fix proper alignment: Ensure abbreviation boxes align with company name text
+   - Prevent text wrapping if space is limited
+
+5. TRAFFIC INCREASE COLUMN - CORRECT SPACING:
+   - Bold percentage (18px, font-weight: 700) centered
+   - Traffic metrics below (13px, gray)
+   - Format: "X → Y" with arrow symbol
+   - Alignment: Percentage centered, metrics aligned below it
+   - Vertical spacing: 4px between percentage and metrics
+   - Ensure arrow symbol (→) has proper spacing on both sides (4px)
+
+6. LINKS BUILT COLUMN:
+   - Single bold number (18px, font-weight: 700) 
+   - Perfectly centered both vertically and horizontally in column
+
+7. TIMEFRAME COLUMN:
+   - Format: "[number] months"
+   - Font-size: 15px, font-weight: 500
+   - Perfectly centered both vertically and horizontally in column
+   - Text color: #000000
+   - Ensure consistent alignment across all rows
+
+8. ACTIONS COLUMN - FIX BUTTON ALIGNMENT:
+   - "View Case" button:
+     * Background: #000000 (pure black)
+     * Text: #FFFFFF (white)
+     * Font-size: 14px, font-weight: 500
+     * Padding: 8px 16px
+     * Border-radius: 4px
+     * Width: fit-content (not full column width)
+   - "Coming Soon" button: 
+     * Background: #FFFFFF (white)
+     * Border: 1px solid #E5E7EB
+     * Text: #6B7280 (medium gray)
+     * Same size/padding as "View Case"
+   - Center buttons horizontally and vertically in their cells
+   - Ensure consistent button sizing across all rows
+
+9. TABLE ROWS - ENSURE CONSISTENT HEIGHTS:
+   - White background
+   - 1px solid #E5E7EB border on all sides
+   - Equal height for all rows (72px exactly)
+   - Cell padding: 16px
+   - Consistent cell alignment across entire row
+   - No overlapping content in any cells
+   - Fix vertical alignment: All content should be vertically centered in cells
+
+10. CLIENT ABBREVIATION BOXES - ENSURE PROPER TEXT CENTERING:
+    - Text inside abbreviation boxes should be perfectly centered
+    - Font-size: 14px, font-weight: 600, color: #FFFFFF
+    - No text overflow outside boxes
+    - Ensure consistent letter spacing inside boxes
+
+11. PAGINATION - FIX ALIGNMENT:
+    - Centered at bottom of page with 32px margin-top
+    - 6 numbered buttons (1-6) of equal size
+    - Active button (3) with black background, white text
+    - Inactive buttons with white background, black text
+    - All buttons: 36px × 36px square, 1px border, 6px border radius
+    - 8px spacing between buttons
+    - Ensure numbers are perfectly centered in buttons
+
+12. OVERALL SPACING FIXES:
+    - Ensure consistent spacing between all table rows
+    - Fix any text or element overflow issues
+    - Maintain proper whitespace around all components
+    - Ensure no text truncation or ellipsis where full text should display
+    - Fix any misalignment between columns
+    - Ensure proper vertical rhythm throughout the page
+
+13. MOBILE RESPONSIVENESS:
+    - Ensure table remains readable on smaller screens
+    - Allow horizontal scrolling for table if needed on mobile
+    - Stack filter options vertically on mobile when needed
+    - Ensure client name and information remain properly aligned on all screen sizes
+
+Please implement these changes with pixel-perfect precision, paying special attention to spacing, alignment, and preventing any overlapping content. The goal is to create a perfect replica of the reference design with clean, professional spacing and alignment throughout.

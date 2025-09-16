@@ -1,0 +1,200 @@
+I need to update my case studies page (/case-studies/) to exactly match the reference design in screenshot 1. My current implementation (screenshot 2) needs several specific changes. Please implement these precise specifications:
+
+1. LAYOUT STRUCTURE:
+   - Main container: 100% width with 32px padding on left and right sides
+   - Border: 1px solid #E5E7EB (light gray) with 12px border radius
+   - Container max-width: 1280px, centered on page
+   - Overall content padding: 32px
+   - Ensure the page has proper vertical spacing similar to other pages
+
+2. HEADER SECTION:
+   - "Case Studies" heading: font-size: 36px, font-weight: 800, color: #000000, line-height: 1.2
+   - Subheading "Real results for B2B SaaS companies at every growth stage": font-size: 16px, font-weight: 400, color: #6B7280
+   - Spacing between heading and subheading: 8px
+   - Spacing between subheading and filter bar: 24px
+
+3. FILTER BAR:
+   - Must be contained in a single row with joined borders
+   - Height: 48px
+   - Border: 1px solid #E5E7EB, border-radius: 6px
+   - Background-color: #FFFFFF
+   - Add "Filter by:" label before filters, font-size: 14px, font-weight: 600
+   - All filters should be visually connected in one bar (not separate dropdowns)
+   - Filters layout:
+     * Left aligned: "Filter by:" label (built into the bar)
+     * Four dropdowns in sequence: "Company Stage," "Link Strategy," "Industry," "Results"
+     * Right aligned: "Reset Filters" button
+
+4. FILTER DROPDOWN STYLING:
+   - Remove duplicate "Filter by:" text from each dropdown (only one label at beginning)
+   - Each dropdown: Equal height (100% of filter bar height)
+   - Dropdown text: font-size: 14px, color: #000000
+   - Dropdown arrows: Small 12px chevron-down icon, color: #6B7280
+   - Border-right: 1px solid #E5E7EB between dropdowns
+   - Padding: 0 16px
+
+5. RESET FILTERS BUTTON:
+   - Text: "Reset Filters" 
+   - Background-color: #F9FAFB (very light gray)
+   - Border-left: 1px solid #E5E7EB
+   - Font-size: 14px, font-weight: 500, color: #4B5563
+   - Height: 100% of filter bar
+   - Padding: 0 16px
+
+6. TABLE STYLING:
+   - Full width table with columns: Client, Traffic Increase, Links Built, Timeframe, Actions
+   - Table header:
+     * Background-color: #F9FAFB (very light gray)
+     * Border: 1px solid #E5E7EB
+     * Font-size: 14px, font-weight: 600, color: #000000
+     * Text alignment: Left for "Client", center for other columns
+     * Padding: 12px 16px
+     * Border-top-left-radius: 6px
+     * Border-top-right-radius: 6px
+
+7. TABLE COLUMN WIDTHS:
+   - Client: 25%
+   - Traffic Increase: 20%
+   - Links Built: 15%
+   - Timeframe: 20%
+   - Actions: 20%
+
+8. TABLE ROWS:
+   - White background (#FFFFFF)
+   - Border-left: 1px solid #E5E7EB
+   - Border-right: 1px solid #E5E7EB
+   - Border-bottom: 1px solid #E5E7EB
+   - Alternating row styling: Add very subtle gray background (#F9FAFB) to even rows
+   - Cell padding: 16px
+   - Row height: 72px exactly (to maintain consistent spacing)
+
+9. CLIENT COLUMN:
+   - Left alignment
+   - Company abbreviation box:
+     * Width: 32px, height: 32px
+     * Border-radius: 4px
+     * Background color varies by client (use colors from reference)
+     * Text: White, 14px, bold, centered
+   - Company name:
+     * Font-size: 16px, font-weight: 600, color: #000000
+   - Industry/category:
+     * Font-size: 13px, font-weight: 400, color: #6B7280
+   - Layout: Flex with 12px gap between abbreviation box and text
+
+10. TRAFFIC INCREASE COLUMN:
+    - Center alignment for percentage
+    - Traffic metrics right-aligned under percentage
+    - Percentage: Font-size: 18px, font-weight: 700, color: #000000
+    - Traffic metrics: Font-size: 13px, color: #6B7280 (e.g., "9K → 26K")
+
+11. LINKS BUILT COLUMN:
+    - Center alignment
+    - Single number
+    - Font-size: 18px, font-weight: 700, color: #000000
+
+12. TIMEFRAME COLUMN:
+    - Center alignment
+    - Text: "[number] months"
+    - Font-size: 15px, font-weight: 500, color: #000000
+
+13. ACTIONS COLUMN:
+    - Center alignment
+    - "View Case" button:
+      * Background-color: #000000
+      * Color: #FFFFFF
+      * Font-size: 14px, font-weight: 500
+      * Padding: 6px 12px
+      * Border-radius: 4px
+    - "Coming Soon" button:
+      * Background-color: #FFFFFF
+      * Border: 1px solid #E5E7EB
+      * Color: #6B7280
+      * Font-size: 14px, font-weight: 500
+      * Padding: 6px 12px
+      * Border-radius: 4px
+
+14. COMPANY DATA (EXACT DETAILS):
+    - SaaS (SaaS Company):
+      * Abbreviation: SaaS (white on blue background)
+      * Industry: "SaaS / Technology"
+      * Traffic: "9K → 26K"
+      * Links: 674
+      * Timeframe: 18 months
+      * Action: "View Case" button
+    
+    - FS (Fintech Startup):
+      * Abbreviation: FS (white on teal/green background)
+      * Industry: "Financial Technology"
+      * Traffic: "24K → 79K"
+      * Links: 24
+      * Timeframe: 6 months
+      * Action: "View Case" button
+    
+    - Mon (Monday.com):
+      * Abbreviation: Mon (white on light blue background)
+      * Industry: "Productivity SaaS"
+      * Traffic: "1.2M → 2.8M"
+      * Links: 551
+      * Timeframe: 12 months
+      * Action: "Coming Soon" button
+    
+    - Wr (Writer.com):
+      * Abbreviation: Wr (white on purple background)
+      * Industry: "AI Writing SaaS"
+      * Traffic: "93K → 293K"
+      * Links: 327
+      * Timeframe: 9 months
+      * Action: "Coming Soon" button
+    
+    - Nx (Nextiva):
+      * Abbreviation: Nx (white on teal background)
+      * Industry: "Communication SaaS"
+      * Traffic: "206K → 515K"
+      * Links: 489
+      * Timeframe: 14 months
+      * Action: "Coming Soon" button
+    
+    - SEM (SEMrush):
+      * Abbreviation: SEM (white on green background)
+      * Industry: "SEO SaaS"
+      * Traffic: "1.2M → 1.9M"
+      * Links: 682
+      * Timeframe: 18 months
+      * Action: "Coming Soon" button
+    
+    - Hub (HubSpot):
+      * Abbreviation: Hub (white on orange background)
+      * Industry: "Marketing SaaS"
+      * Traffic: "3.5M → 6.1M"
+      * Links: 734
+      * Timeframe: 24 months
+      * Action: "Coming Soon" button
+
+15. PAGINATION:
+    - Pagination container: Centered, margin-top: 32px
+    - Pagination buttons: Width: 36px, height: 36px, border: 1px solid #E5E7EB, border-radius: 6px
+    - Active pagination: Background-color: #000000, color: #FFFFFF
+    - Inactive pagination: Background-color: #FFFFFF, color: #000000
+    - Font-size: 14px, font-weight: 500
+    - Spacing between pagination buttons: 8px
+    - Current active page: 3 (as shown in screenshot 1)
+
+16. CLIENT ABBREVIATION BOX COLORS:
+    - SaaS: #2563EB (blue)
+    - FS: #0EA5E9 (teal/light blue)
+    - Mon: #3B82F6 (medium blue)
+    - Wr: #8B5CF6 (purple)
+    - Nx: #06B6D4 (teal)
+    - SEM: #10B981 (green)
+    - Hub: #F97316 (orange)
+
+17. OVERALL ADJUSTMENTS FROM CURRENT VERSION:
+    - Fix filter bar layout from separate components to unified bar
+    - Change header styling to match reference
+    - Adjust table styling to match reference exactly
+    - Correct table header background color and styling
+    - Fix cell alignment and padding
+    - Ensure exact client data matches reference
+    - Update pagination to show page 3 as active
+
+Please implement these changes with pixel-perfect precision to make my current case studies page (screenshot 2) exactly match the target design (screenshot 1). The goal is to create a perfect replica of the reference design.

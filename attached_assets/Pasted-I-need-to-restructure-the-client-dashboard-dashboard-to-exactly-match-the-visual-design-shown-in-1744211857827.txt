@@ -1,0 +1,321 @@
+I need to restructure the client dashboard (/dashboard/) to exactly match the visual design shown in the screenshots. Please implement these precise specifications while maintaining all existing functionality:
+
+1. GLOBAL DASHBOARD LAYOUT:
+   - Main container: 100% width, max-width: 1200px, margin: 24px auto
+   - Border: 1px solid #E5E7EB, border-radius: 12px
+   - Background-color: #FFFFFF
+   - Padding: 32px
+   - Page background: #F9FAFB (light gray)
+   - Header bar styling:
+     * GrowthOG logo on left (black text, font-weight: 700)
+     * Navigation links: Services, Pricing, Resources, About Us (16px, color: #4B5563)
+     * User profile area on right showing username (e.g., "myron")
+   - Sub-header:
+     * "← Back to Website" link: font-size: 14px, color: #2563EB, with left arrow icon
+     * "Beta dashboard in progress. Bugs expected - your feedback helps us improve" text: font-size: 14px, color: #6B7280
+     * "Feedback" button: white background, 1px gray border, padding: 4px 8px, with feedback icon
+
+2. DASHBOARD HEADER:
+   - "Client Dashboard": font-size: 32px, font-weight: 800, color: #000000, margin-bottom: 8px
+   - "Your link building campaign at a glance": font-size: 16px, color: #2563EB, display: inline-block
+   - "BETA" label: black background (#000000), white text, font-size: 12px, font-weight: 600, padding: 2px 6px, border-radius: 4px, margin-left: 8px, vertical-align: middle
+   - Spacing below header: 24px
+
+3. TAB NAVIGATION:
+   - Container: background-color: #F9FAFB, border-radius: 8px, overflow: hidden
+   - 5 equal-width tabs (20% each): "PRIORITY CONTENT", "CAMPAIGN BUILDER", "LINK PROGRESS", "LINK DOMAINS", "SETTINGS"
+   - Tab height: 48px
+   - Active tab styling:
+     * Text: font-weight: 600, color: #2563EB
+     * Background: white
+     * Border-bottom: 2px solid #2563EB
+   - Inactive tab styling:
+     * Text: font-weight: 400, color: #6B7280
+     * Background: #F9FAFB
+     * No border
+   - Font-size: 14px, text-align: center, text-transform: uppercase
+   - Spacing below tabs: 24px
+
+4. PRIORITY CONTENT TAB (Screenshot 1):
+   - Header section:
+     * "Priority Content": font-size: 24px, font-weight: 700, color: #000000
+     * "+ Add Content" button: black background, white text, 14px font, padding: 8px 16px, border-radius: 6px, positioned at top-right
+   - Info alert:
+     * Light blue background (#EFF6FF)
+     * Border: 1px solid #DBEAFE, border-radius: 6px
+     * Padding: 16px
+     * Text: "These are example content items. Add your first content to start tracking your own priority pages."
+     * Font-size: 14px, color: #1E40AF
+   - Content table:
+     * Full width with columns: URL (25%), Content Type (15%), Goal (10%), Status (10%), Target Keyword (20%), Actions (10%)
+     * Header styling: font-size: 14px, font-weight: 600, color: #000000, padding: 12px 16px, background: #F9FAFB
+     * Border: 1px solid #E5E7EB, border-radius: 8px, overflow: hidden
+     * Row styling: border-bottom: 1px solid #E5E7EB, padding: 12px 16px
+     * URL column: font-size: 14px, color: #000000, max-width with ellipsis for overflow
+     * Status column: "Active" pill - green background (#DCFCE7), green text (#166534), border-radius: 12px, padding: 2px 8px
+     * Actions column: Edit icon (pencil) and Delete icon (trash), gray color (#6B7280)
+
+5. ADD PRIORITY CONTENT MODAL (Screenshot 2):
+   - Modal overlay: semi-transparent black background (rgba(0,0,0,0.5))
+   - Modal container: width: 500px, centered
+   - Background: white, border-radius: 8px
+   - Box-shadow: 0 4px 12px rgba(0,0,0,0.15)
+   - Header:
+     * "Add Priority Content": font-size: 18px, font-weight: 700, color: #000000, padding: 16px 24px
+     * Close (×) button: top-right, font-size: 20px, color: #6B7280
+   - Form body: padding: 0 24px 24px 24px
+   - Form fields (top to bottom):
+     * URL: Input field, placeholder "example.com/page"
+     * Content Type: Dropdown, "Money Page (Product/Service page)"
+     * Goal: Dropdown, "SEO (Rankings focused)"
+     * Status: Dropdown, "Active"
+     * Target Keyword: Input field, placeholder "Your primary keyword"
+     * Notes: Textarea, placeholder "Special instructions or focus areas"
+   - Form styling:
+     * Labels: font-size: 14px, font-weight: 600, color: #000000, margin-bottom: 6px
+     * Input fields: height: 40px, border: 1px solid #D1D5DB, border-radius: 6px, padding: 0 12px
+     * Dropdown: same as input fields with dropdown arrow
+     * Textarea: height: 80px, padding: 12px
+     * Spacing between fields: 16px
+   - Footer buttons:
+     * "Cancel": white background, gray border, font-size: 14px, padding: 8px 16px
+     * "Add Content": black background, white text, font-size: 14px, padding: 8px 16px
+     * Both with border-radius: 6px
+     * Aligned to the right with 8px gap
+
+6. CAMPAIGN BUILDER TAB (Screenshot 3):
+   - Header section:
+     * "Campaign Builder": font-size: 24px, font-weight: 700, color: #000000
+     * "Build your custom link building campaign based on your goals and budget": font-size: 16px, color: #4B5563
+   - "Design Your Campaign" button:
+     * Black background (#000000)
+     * White text (#FFFFFF)
+     * Font-size: 14px, font-weight: 600
+     * Padding: 10px 20px
+     * Border-radius: 6px
+     * Margin-top: 16px
+
+7. CAMPAIGN BUILDER - EXPANDED VIEW (Screenshot 4):
+   - Left column (70%):
+     * "Design your campaign" heading: font-size: 18px, font-weight: 700
+     * "Configure the key parameters for your link building campaign" subheading: font-size: 14px, color: #6B7280
+     * Section heading "Build Your Campaign": font-size: 16px, font-weight: 700, margin-top: 24px
+     * Subheading: "Select parameters to create a custom link building strategy": font-size: 14px, color: #6B7280
+   - Option categories (each with 16px font-weight: 600 heading):
+     * Goals: 3 options - "SEO", "PR", "Both"
+     * Monthly Budget: 3 options - "$2,500", "$5,000", "$10,000+"
+     * Campaign Duration: 3 options - "3 months", "6 months", "12 months"
+     * Link Velocity: 3 options - "Conservative", "Balanced", "Aggressive"
+     * Type of Articles: 3 options - "Money Pages", "Resources", "Primary Research"
+   - Option box styling:
+     * Equal width within each category (33.33%)
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 6px
+     * Padding: 12px
+     * Margin: 8px
+     * Unselected: white background
+     * Selected: white background, 2px solid black border, black dot (8px) in bottom right
+   - Option text styling:
+     * Title: font-size: 14px, font-weight: 600, color: #000000
+     * Description: font-size: 12px, color: #6B7280
+   - Bottom buttons:
+     * "Cancel": white background, gray border
+     * "Save Campaign": black background, white text
+     * Both with border-radius: 6px, padding: 8px 16px, font-size: 14px
+   
+   - Right column (30%):
+     * "Campaign Strategy" heading: font-size: 18px, font-weight: 700
+     * "Estimated results based on your selections" subheading: font-size: 14px, color: #6B7280
+     * Metrics display:
+       - "5-10 links per month": Large value (16px, bold), label (14px, regular)
+       - "55-65" DR range
+       - "45-60 days" timeline
+       - "70% SEO, 30% brand authority" ratio
+     * "Projected Outcomes" section with bullet points (black circles)
+     * Each outcome with 14px font, 1.5 line height
+
+8. CAMPAIGN SUMMARY VIEW (Screenshot 5):
+   - Success message:
+     * Green background (#DCFCE7)
+     * Green checkmark icon
+     * "Campaign Created Successfully" text: font-weight: 600
+     * "Your campaign has been created and will be reviewed by our team." text: regular weight
+     * Border: 1px solid #86EFAC, border-radius: 6px
+     * Padding: 12px
+     * Margin-bottom: 24px
+   
+   - Summary container:
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 24px
+   
+   - Summary header:
+     * "Campaign Summary": font-size: 18px, font-weight: 700
+     * "Edit Campaign" button: blue text, no background, positioned right
+   
+   - Summary content:
+     * Two-column layout (50/50 split)
+     * Left labels: "Goal", "Monthly Budget", "Campaign Duration", "Link Velocity", "Type of Articles"
+     * Label styling: font-size: 14px, color: #6B7280
+     * Value styling: font-size: 14px, font-weight: 500, color: #000000
+     * Right values: metrics matching chosen options
+     * Each row with 16px bottom margin
+   
+   - Download button:
+     * Positioned bottom-right
+     * Black background
+     * White text with download icon
+     * "Download Summary" text
+     * Padding: 8px 16px
+     * Border-radius: 6px
+
+9. LINK PROGRESS TAB (Screenshot 6):
+   - Top metrics section:
+     * 4 equal boxes in a row
+     * White background
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 16px
+     * Metric value: font-size: 24px, font-weight: 700
+     * Metric description: font-size: 14px, color: #6B7280
+     * Metrics displayed: "Total Links: 27", "Live Links: 19", "Pending Links: 8", "Avg Domain Rating: 58"
+     * Secondary stats in smaller font below each metric
+   
+   - Recent Links section:
+     * Header with "Recent Links" text: font-size: 18px, font-weight: 700
+     * Right-aligned dropdown filter: "All Time" with down arrow
+     * Action buttons:
+       - "Build New Campaign": gold/yellow background
+       - "View All Links": white background, black border
+       - Both with border-radius: 6px, padding: 6px 12px, font-size: 14px
+   
+   - Links table:
+     * Full width
+     * Columns: DATE, DOMAIN, DR, LINK FROM, LINK TO, ANCHOR TEXT, STATUS, TYPE
+     * Header row: background: #F9FAFB, font-size: 14px, font-weight: 600
+     * Border: 1px solid #E5E7EB, border-radius: 8px, overflow: hidden
+     * Row styling: border-bottom: 1px solid #E5E7EB, padding: 12px 16px
+     * Status pill styling:
+       - Live: green background, white text
+       - Submitted: yellow background, white text
+       - Progress: blue background, white text
+       - Revised: gray background, white text
+     * Type column: "Editorial" or "Guest Post"
+   
+   - Pagination:
+     * Centered progress bar
+     * Left/right arrow buttons
+     * Numerical page controls below
+
+10. LINK DOMAINS TAB (Screenshot 7):
+    - Header section:
+      * "Link Domains" text: font-size: 24px, font-weight: 700, color: #000000
+      * Action buttons:
+        - "Filter Domains": white background, gray border
+        - "Add Selected to Campaign (0)": white background, gray border
+        - Both with border-radius: 6px, padding: 6px 12px, font-size: 14px
+    
+    - Domains table:
+      * Full width
+      * Checkbox column for selection (20px square checkboxes)
+      * Columns: DOMAIN, DR SCORE, MONTHLY TRAFFIC, PRICE, LINK TYPE
+      * Header row: background: #F9FAFB, font-size: 14px, font-weight: 600
+      * Border: 1px solid #E5E7EB, border-radius: 8px, overflow: hidden
+      * Row styling: border-bottom: 1px solid #E5E7EB, padding: 12px 16px
+      * Link Type styling:
+        - Editorial: red text (#EF4444)
+        - Guest Post: dark gray text (#4B5563)
+    
+    - Pagination:
+      * "Page 1 of 2" text centered
+      * Previous/Next buttons with arrows
+      * Positioned at bottom of table
+
+11. SETTINGS TAB - ACCOUNT SETTINGS (Screenshot 8):
+    - Header section:
+      * "Settings" text: font-size: 24px, font-weight: 700, color: #000000
+      * "Manage your account settings and preferences" text: font-size: 16px, color: #6B7280
+    
+    - Settings tabs:
+      * 3 tabs: "Account", "Brand Settings", "Notifications"
+      * Active tab: border-bottom: 2px solid #2563EB, color: #2563EB
+      * Inactive tabs: no border, color: #6B7280
+      * Tab height: 40px, font-size: 14px
+    
+    - Account settings container:
+      * White background
+      * Border: 1px solid #E5E7EB, border-radius: 8px
+      * Padding: 24px
+    
+    - Account settings content:
+      * "Account Settings" heading: font-size: 18px, font-weight: 700
+      * "Manage your account details and preferences" text: font-size: 14px, color: #6B7280
+      * Email and name fields displayed
+
+12. SETTINGS TAB - BRAND SETTINGS (Screenshot 9):
+    - Same header and tabs as Account Settings
+    - Brand settings container:
+      * White background
+      * Border: 1px solid #E5E7EB, border-radius: 8px
+      * Padding: 24px
+    
+    - Brand settings content:
+      * "Brand Settings" heading: font-size: 18px, font-weight: 700
+      * "Upload your brand logo and customize appearance" text: font-size: 14px, color: #6B7280
+      * File upload field:
+        - "Brand Logo" label: font-size: 14px, font-weight: 600
+        - Upload input: "Choose file. No file chosen." text
+        - Helper text: font-size: 14px, color: #6B7280
+
+13. SETTINGS TAB - NOTIFICATIONS (Screenshot 10):
+    - Same header and tabs as other Settings tabs
+    - Notifications container:
+      * White background
+      * Border: 1px solid #E5E7EB, border-radius: 8px
+      * Padding: 24px
+    
+    - Notifications content:
+      * "Notification Preferences" heading: font-size: 18px, font-weight: 700
+      * "Manage your notification settings" text: font-size: 14px, color: #6B7280
+      * Toggle options:
+        - Marketing emails
+        - Social emails
+        - Update emails
+      * Each with descriptive text and toggle switch
+      * Toggle styling:
+        - Track: 44px width, 24px height, rounded
+        - Circle: 20px diameter, white
+        - On state: blue background (#3B82F6)
+        - Off state: gray background (#9CA3AF)
+      * "Cancel" and "Save preferences" buttons at bottom right
+
+14. FUNCTIONALITY REQUIREMENTS:
+    - Preserve all existing dashboard functionality:
+      * Tab switching without page reloads
+      * Modal interactions for adding content
+      * Campaign builder option selection
+      * Campaign saving and editing
+      * Domain selection in Link Domains tab
+      * Settings management
+      * Session data persistence
+      * Logout warning with magic link option
+    
+    - Ensure all interactions work properly:
+      * Priority Content: Add, edit, delete functionality
+      * Campaign Builder: Option selection, real-time preview updates
+      * Link Domains: Checkbox selection, filtering
+      * Settings: Tab switching, toggle controls
+    
+    - Maintain all validation and error handling:
+      * Form field validation
+      * Success/error messages
+      * Data persistence during session
+      * Proper warning before logout
+
+15. RESPONSIVE DESIGN:
+    - Maintain responsive layout for all screen sizes
+    - Tables should have horizontal scroll on mobile
+    - Option cards should stack on smaller screens
+    - Maintain legibility of all text elements
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshots while preserving all existing functionality. The visual restructuring should maintain the exact layout, spacing, typography, and color scheme shown in the screenshots.

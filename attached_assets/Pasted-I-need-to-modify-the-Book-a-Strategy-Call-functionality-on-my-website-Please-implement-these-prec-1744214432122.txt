@@ -1,0 +1,199 @@
+I need to modify the "Book a Strategy Call" functionality on my website. Please implement these precise specifications:
+
+1. REMOVE CURRENT PAGE:
+   - Delete or disable the current /book-a-call/ page
+   - The "Book a Strategy Call" button in the navigation bar should no longer redirect to a separate page
+
+2. IMPLEMENT MULTI-STEP POPUP SEQUENCE:
+   - When the "Book a Strategy Call" button is clicked in the navigation bar, a popup sequence should appear
+   - This popup sequence should follow the 6 steps shown in the screenshots
+   - Background overlay: semi-transparent black (rgba(0,0,0,0.7))
+   - Popup should be centered in the viewport
+
+3. POPUP CONTAINER STYLING (CONSISTENT ACROSS ALL STEPS):
+   - Width: 550px
+   - Background-color: #FFFFFF
+   - Border-radius: 12px
+   - Box-shadow: 0 4px 20px rgba(0,0,0,0.2)
+   - Padding: 32px
+   - Close (×) button: top-right corner, 16px from edge, 20px font size, #6B7280 color
+
+4. HEADER STYLING (CONSISTENT ACROSS ALL STEPS):
+   - "Schedule a Strategy Call": font-size: 28px, font-weight: 800, color: #000000
+   - Margin-bottom: 24px
+
+5. NAVIGATION DOTS:
+   - 6 small dots at bottom of popup representing the 6 steps
+   - Active step: black filled circle
+   - Inactive steps: light gray (#E5E7EB) filled circles
+   - Dot size: 8px diameter
+   - Spacing between dots: 8px
+   - Centered at bottom of popup
+   - Margin-top: 32px
+
+6. STEP 1 - COMPANY STAGE (SCREENSHOT 1):
+   - Question: "What stage is your company at?" - font-size: 22px, font-weight: 700, color: #000000
+   - Three selectable options:
+     * "EARLY-STAGE" with "Pre-Seed to Series A" subtext
+     * "HIGH-GROWTH" with "Series A to Series C" subtext
+     * "ESTABLISHED" with "Series D+" subtext
+   - Option styling:
+     * Full width
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 20px
+     * Margin-bottom: 16px
+     * Main text: font-size: 16px, font-weight: 700, color: #000000
+     * Subtext: font-size: 14px, color: #6B7280
+   - "Next" button:
+     * Gray background (#6B7280)
+     * White text
+     * Padding: 10px 20px
+     * Border-radius: 6px
+     * Position: bottom-right
+     * Font-size: 16px
+     * Font-weight: 600
+
+7. STEP 2 - COMPANY NICHE (SCREENSHOT 2):
+   - Question: "What niche are you in?" - font-size: 22px, font-weight: 700, color: #000000
+   - Three selectable options:
+     * "SaaS"
+     * "E-Commerce"
+     * "Other"
+   - Option styling: Same as Step 1
+   - Navigation:
+     * "Back" button: White background, gray border, left aligned
+     * "Next" button: Gray background, white text, right aligned
+     * Both buttons: Padding: 10px 20px, border-radius: 6px, font-size: 16px
+
+8. STEP 3 - PRIMARY CHALLENGES (SCREENSHOT 3):
+   - Question: "What are your primary challenges right now?" - font-size: 22px, font-weight: 700, color: #000000
+   - Subtext: "Select all that apply" - font-size: 16px, color: #6B7280
+   - Six checkbox options in 2×3 grid:
+     * "Limited resources for outreach, content creation, and quality control"
+     * "Need for specialized knowledge and relationships not present in-house"
+     * "High costs and resource demands for setting up effective link-building"
+     * "Difficulty maintaining quality while expanding link-building efforts"
+     * "Struggling to obtain high-quality, authoritative links"
+     * "Ensuring backlinks from contextually relevant content for maximum SEO benefit"
+   - Checkbox styling:
+     * Square checkboxes (20px × 20px)
+     * When checked: Black fill with white checkmark
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 4px
+   - Option box styling:
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 16px
+     * Width: calc(50% - 8px)
+     * Margin: 4px
+     * Font-size: 14px
+   - Navigation: Same as Step 2
+
+9. STEP 4 - MONTHLY BUDGET (SCREENSHOT 4):
+   - Question: "What's your monthly budget for link building?" - font-size: 22px, font-weight: 700, color: #000000
+   - Four radio button options:
+     * "Under $2,000 / month"
+     * "$2,000 - $5,000 / month"
+     * "$5,000 - $10,000 / month" (shown selected in screenshot)
+     * "Over $10,000 / month"
+   - Radio button styling:
+     * Circle radio buttons (20px diameter)
+     * When selected: Black outer ring with black inner circle
+     * Border: 1px solid #E5E7EB
+   - Option box styling:
+     * Full width
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 16px
+     * Margin-bottom: 16px
+     * Font-size: 16px
+   - Selected option styling:
+     * 2px solid black border
+   - Navigation buttons:
+     * "Back" button: White background, gray border
+     * "Next" button: Black background, white text (note color change from previous steps)
+     * Both buttons: Padding: 10px 20px, border-radius: 6px, font-size: 16px
+
+10. STEP 5 - CONTACT INFORMATION (SCREENSHOT 5):
+    - Question: "Your contact information" - font-size: 22px, font-weight: 700, color: #000000
+    - Subtext: "Please provide your contact details so we can prepare for our call." - font-size: 16px, color: #6B7280
+    - Form fields:
+      * Name input with label "Name"
+      * Email input with label "Email"
+      * Placeholders: "Your name" and "Your email address"
+    - Input styling:
+      * Full width
+      * Border: 1px solid #E5E7EB
+      * Border-radius: 8px
+      * Padding: 12px 16px
+      * Font-size: 16px
+      * Height: 48px
+    - Error state shown for Name field:
+      * Red exclamation mark icon on right side
+      * Border color changes to red (#EF4444)
+    - Navigation buttons:
+      * "Back" button: White background, gray border
+      * "Next" button: Black background, white text
+      * Both buttons: Padding: 10px 20px, border-radius: 6px, font-size: 16px
+
+11. STEP 6 - FINAL OPTIONS (SCREENSHOT 6):
+    - Header: "Great! Let's take the next step" - font-size: 22px, font-weight: 700, color: #000000
+    - Subtext: "Based on your responses, we can either schedule a strategy call with our team or build a custom link-building strategy for your company." - font-size: 16px, color: #6B7280, line-height: 1.5
+    - Two option cards:
+      * "Book a Strategy Call" with "Talk with our experts to discuss your specific needs and how we can help."
+      * "Build My Strategy" with "Get a customized link building strategy based on your company profile."
+    - Card styling:
+      * Width: 48% (with gap between)
+      * Border: 1px solid #E5E7EB
+      * Border-radius: 8px
+      * Padding: 20px
+      * Title: font-size: 18px, font-weight: 700, color: #000000
+      * Description: font-size: 14px, color: #6B7280
+    - Action buttons within each card:
+      * Black background
+      * White text
+      * Border-radius: 6px
+      * Padding: 10px 16px
+      * Font-size: 14px
+      * Font-weight: 600
+      * Text centered
+      * Width: 100%
+      * Margin-top: 16px
+    - "Back" button at bottom left: White background, gray border, padding: 10px 20px
+
+12. FUNCTIONALITY REQUIREMENTS:
+    - When "Book a Strategy Call" button is clicked in navigation, the popup sequence starts at Step 1
+    - Each step's "Next" button advances to the next step in sequence
+    - Each step's "Back" button returns to the previous step
+    - The close (×) button closes the popup at any step
+    - In Step 3, multiple checkboxes can be selected
+    - In Step 4, only one radio option can be selected
+    - In Step 5, form validation:
+      * Name and Email are required fields
+      * Email must be in valid format
+      * Show error indicators for invalid fields
+    - In final step (Step 6):
+      * "Book a Strategy Call" button should link to: https://calendly.com/russell-jba/30min
+      * "Build My Strategy" button should trigger appropriate action
+
+13. STATE PERSISTENCE:
+    - User selections should be preserved when navigating back and forth between steps
+    - If user closes popup and reopens, the sequence should start from beginning
+
+14. RESPONSIVE BEHAVIOR:
+    - On mobile devices (width < 640px):
+      * Popup width should adjust to 90% of viewport
+      * Option grid in Step 3 should stack to single column
+      * Option cards in Step 6 should stack to single column
+      * Form elements and buttons should adjust for touch-friendly sizes
+    - Ensure the popup is scrollable if content exceeds viewport height
+    - Maintain readability of all text elements at all screen sizes
+
+15. VISUAL TOUCHES:
+    - Smooth transitions between steps (fade or slide effect)
+    - Subtle hover effects on clickable elements
+    - Focus states for form elements
+    - Loading indicator during submission if needed
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshots. The popup sequence should replace the current /book-a-call/ page functionality and be triggered directly from the "Book a Strategy Call" button in the main navigation.

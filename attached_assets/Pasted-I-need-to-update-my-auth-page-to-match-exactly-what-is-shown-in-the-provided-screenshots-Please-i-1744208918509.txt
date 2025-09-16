@@ -1,0 +1,161 @@
+I need to update my /auth/ page to match exactly what is shown in the provided screenshots. Please implement the following precise specifications:
+
+1. INITIAL POPUP (Screenshot 1):
+   - Popup should appear automatically when /auth/ page is first accessed
+   - Centered in the middle of the screen with overlay background
+   - Width: 400px
+   - Background-color: #FFFFFF
+   - Border-radius: 8px
+   - Box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+   - Header styling:
+     * "Welcome to the GrowthOG Dashboard" - font-size: 18px, font-weight: 700, color: #000000
+     * Subtitle: "This is a beta version of our dashboard. Thank you for being an early user." - font-size: 14px, color: #6B7280
+   - Content styling:
+     * "The dashboard is still in development, so you may encounter errors in your account features. Your feedback is extremely valuable to us as we refine the experience." - font-size: 14px, color: #000000, line-height: 1.5
+     * "Please use the feedback button if you encounter any issues or have suggestions for improvements." - font-size: 14px, color: #000000, line-height: 1.5
+   - Button styling:
+     * "Don't show again" - background: #FFFFFF, border: 1px solid #E5E7EB, color: #374151, font-size: 14px, padding: 8px 16px, border-radius: 6px
+     * "Got it" - background: #0F172A (dark navy), color: #FFFFFF, font-size: 14px, padding: 8px 16px, border-radius: 6px
+   - Close icon in top-right corner: "×" - font-size: 20px, color: #9CA3AF
+   - Popup should disappear when "Got it" or "Don't show again" are clicked
+   - "Don't show again" should save preference in local storage
+
+2. MAIN DASHBOARD PAGE (Screenshots 2 & 3):
+   - Header bar:
+     * GrowthOG logo on left
+     * Navigation links: Services, Pricing, Resources, About Us
+     * Each link: font-size: 16px, color: #4B5563, font-weight: 500
+   - Sub-header:
+     * "← Back to Website" link on left - font-size: 14px, color: #2563EB
+     * "Beta dashboard in progress. Bugs expected - your feedback helps us improve" text - font-size: 14px, color: #6B7280
+     * "Feedback" button on right - background: #FFFFFF, border: 1px solid #E5E7EB, padding: 4px 8px, font-size: 14px
+   - Main container:
+     * Width: 100% (max-width: 560px)
+     * Margin: 48px auto
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 12px
+     * Background-color: #FFFFFF
+     * Padding: 32px
+
+3. LOGIN FORM (Screenshot 2):
+   - Header:
+     * "Welcome to GrowthOG Dashboard" - font-size: 24px, font-weight: 700, color: #000000, text-align: center
+     * "Experience what it's like to work with us" - font-size: 16px, color: #6B7280, text-align: center
+   - Form container:
+     * Background-color: #FFFFFF
+     * Border: 1px solid #E5E7EB
+     * Border-radius: 8px
+     * Padding: 24px
+     * Margin-top: 24px
+   - Section headings:
+     * "Credentials" on left - font-size: 14px, font-weight: 600, color: #000000
+     * "Magic Link" on right - font-size: 14px, font-weight: 600, color: #000000
+   - Input fields:
+     * Labels: "Name", "Email" - font-size: 14px, font-weight: 600, color: #000000
+     * Input boxes: Height: 40px, border: 1px solid #D1D5DB, border-radius: 6px, padding: 0 12px
+     * Placeholder text: "Enter your name", "Enter your email" - font-size: 14px, color: #9CA3AF
+     * Error indicator: Small red square on right side if validation fails
+   - Checkbox:
+     * "Remember me" option - font-size: 14px, color: #374151
+     * Square checkbox with black checkmark when selected
+   - Sign In button:
+     * Width: 100%
+     * Background-color: #000000
+     * Color: #FFFFFF
+     * Font-size: 14px, font-weight: 600
+     * Padding: 12px 0
+     * Border-radius: 6px
+     * Text centered
+   - Bottom link:
+     * "Don't have an account? Sign up" - font-size: 14px, text-align: center
+     * "Sign up" in blue (#2563EB)
+
+4. MAGIC LINK FORM (Screenshot 3):
+   - Same container and header as login form
+   - Single email input field:
+     * Label: "Email" - font-size: 14px, font-weight: 600, color: #000000
+     * Input box: Height: 40px, border: 1px solid #D1D5DB, border-radius: 6px, padding: 0 12px
+     * Placeholder: "Enter your email" - font-size: 14px, color: #9CA3AF
+   - "Send Magic Link" button:
+     * Width: 100%
+     * Background-color: #000000
+     * Color: #FFFFFF
+     * Font-size: 14px, font-weight: 600
+     * Padding: 12px 0
+     * Border-radius: 6px
+     * Include small envelope icon to the left of text
+   - Helper text:
+     * "We'll email you a magic link for passwordless sign in" - font-size: 14px, color: #6B7280, text-align: center
+   - Bottom link:
+     * "Don't have an account? Sign up" - font-size: 14px, text-align: center
+     * "Sign up" in blue (#2563EB)
+
+5. FEEDBACK MODAL (Screenshot 4):
+   - Should appear when "Feedback" button is clicked
+   - Centered in middle of screen with overlay background
+   - Width: 450px
+   - Background-color: #FFFFFF
+   - Border-radius: 8px
+   - Box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+   - Header:
+     * "Share Your Feedback" - font-size: 18px, font-weight: 700, color: #000000
+     * Subtitle: "Your feedback helps us improve the dashboard experience for everyone." - font-size: 14px, color: #6B7280
+   - Feedback form:
+     * Label: "What can we improve?" - font-size: 14px, font-weight: 600, color: #000000
+     * Textarea: Height: 120px, border: 1px solid #D1D5DB, border-radius: 6px, padding: 12px
+     * Placeholder: "Tell us about your experiences, bugs you've encountered, or features you'd like to see."
+   - Buttons:
+     * "Cancel" - background: #FFFFFF, border: 1px solid #E5E7EB, color: #374151, font-size: 14px, padding: 8px 16px, border-radius: 6px
+     * "Submit Feedback" - background: #94A3B8 (gray), color: #FFFFFF, font-size: 14px, padding: 8px 16px, border-radius: 6px
+   - Close icon in top-right corner: "×" - font-size: 20px, color: #9CA3AF
+
+6. FUNCTIONALITY REQUIREMENTS:
+   - Welcome popup should display on first visit to /auth/ page
+   - "Got it" button should close popup for current session
+   - "Don't show again" should store preference in localStorage and not show popup again
+   - Login form should validate email format before submission
+   - Magic link form should validate email format before submission
+   - "Feedback" button should open the feedback modal
+   - Feedback modal should close when "Cancel" is clicked or when clicking outside the modal
+   - "Submit Feedback" should validate that feedback is not empty
+   - All links and buttons should have proper hover states (subtle color changes)
+   - Ensure that all interactive elements have cursor: pointer on hover
+
+7. PRESERVE EXISTING FUNCTIONALITY:
+   - Maintain all current form submission functionality
+   - Preserve all authentication methods and validation
+   - Keep all existing routes and redirects working properly
+   - Ensure login still redirects to the correct dashboard page upon successful authentication
+   - Maintain all existing API endpoint connections
+   - Preserve any token storage or cookie functionality
+   - Magic link request should still trigger the email sending process
+   - Ensure "Sign up" link redirects to the correct registration page
+   - "Back to Website" should continue to redirect to the homepage
+   - Preserve any existing error messages and validations
+   - Maintain any analytics or tracking that may be present
+
+8. REDIRECT HANDLING:
+   - All existing redirects must continue to work as expected
+   - After successful authentication, redirect to the same dashboard page as the current implementation
+   - After magic link submission, keep the same success/confirmation screen
+   - Maintain proper handling of URL parameters in redirects
+   - Preserve any OAuth redirects if applicable
+   - Ensure signup redirects properly to registration flow
+   - Handle any custom redirect parameters passed to the auth page
+   - Maintain any redirect behavior after password reset
+
+9. LAYOUT CONSISTENCY:
+   - Ensure all elements are perfectly aligned
+   - Maintain consistent spacing between all components
+   - No text overflow or truncation
+   - Forms should be centered in the page
+   - Both modals should be centered in the viewport with proper z-index
+   - Overlay backgrounds should be semi-transparent black (rgba(0,0,0,0.4))
+
+10. RESPONSIVENESS:
+    - Forms should adapt to smaller screens without horizontal scrolling
+    - Modals should remain centered and properly sized on all screens
+    - Text should remain readable at all screen sizes
+    - Input fields should remain properly sized and usable on mobile
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshots. Ensure all functionality works as described, with proper validation and error handling. Most importantly, maintain all existing backend connections, form submission handling, and redirect logic to ensure the application continues to function correctly with the new visual design.

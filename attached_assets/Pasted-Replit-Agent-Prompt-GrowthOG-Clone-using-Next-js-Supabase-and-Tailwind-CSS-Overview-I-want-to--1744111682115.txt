@@ -1,0 +1,71 @@
+Replit Agent Prompt: GrowthOG Clone using Next.js, Supabase, and Tailwind CSS
+Overview:
+I want to create a responsive, modern marketing website using Next.js and Tailwind CSS that
+visually and structurally mirrors the site: https://growthog.com.
+Use Supabase for authentication via magic link login, and include a logged-in dashboard for users.
+Pages to Create:
+- Home
+- Services
+- Case Studies
+- Case Study Detail (dynamic route)
+- Blog
+- Blog Post (dynamic route)
+- Resources
+- Pricing
+- About Us
+- Book a Strategy Call
+- Feedback
+- Not Found (404 page)
+Authentication with Supabase:
+- Use magic link authentication
+- Pages:
+- Login (email input)
+- Magic Link Handler
+- Dashboard (protected route)
+Dashboard (only accessible when logged in):
+- Sidebar navigation:
+- Dashboard
+- Priority Content
+- Campaign Builder
+- Link Progress
+- Link Domains
+- Settings
+- Feedback
+- Logout
+- Show user email from Supabase session
+- Include placeholders or mock data
+Components to Include:
+- Navbar with login/logout logic
+- Footer with social/contact links
+- Hero section (headline, subtext, CTA)
+- Blog post grid with filters & pagination
+- Case study cards and detail layout
+- Pricing cards and FAQs
+- Resources and downloadable guides
+- Booking modal with multi-step form
+- Feedback form
+- Dialogs, Tabs, Cards, Filter controls
+Design:
+- Use Tailwind CSS
+- Clean, light theme with rounded corners
+- Fully mobile responsive
+- Use design and component references from uploaded UI Kit PDFs
+Data:
+- Use mock data for:
+- Blog posts
+- Case studies
+- Pricing plans
+- Resource guides
+Structure:
+- Use Next.js app structure with:
+- /pages for routing
+- /components for reusable blocks
+- /lib or /utils for logic
+- Dashboard pages can be under /pages/dashboard
+SEO Optimization:
+- Add basic SEO meta tags for each page (title, description, canonical URL)
+- Use next/head to inject meta information dynamically
+- Add Open Graph + Twitter card metadata for better link previews
+- Include alt text on all images
+- Use semantic HTML (header, nav, main, section, article, footer)
+- Create and include a sitemap.xml and robots.txt

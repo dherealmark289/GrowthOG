@@ -1,0 +1,383 @@
+
+Please integrate Supabase magic link authentication into the existing site.
+
+Here’s what I want to achieve:
+
+---
+
+🔐 AUTHENTICATION FLOWS
+
+1. Magic Link Login:
+- User enters their email address
+- They receive a magic login link via email
+- Once they click the link, they should be redirected to /dashboard
+- The login should require no password
+
+2. Name + Email Entry (Lead Generation):
+- There is another flow where the user enters name and email
+- This does not require password or email verification
+- Upon submit, store the name and email into a Supabase table
+- Redirect to a limited version of /dashboard or /lead-dashboard
+- Save the data in Supabase even if not authenticated
+
+---
+
+📦 SESSION MANAGEMENT
+
+- Use Supabase’s auth session to persist login after refresh
+- If the user is already logged in, keep them on the dashboard
+- If the session is expired or missing, redirect to /login
+
+---
+
+🗂️ DATABASE SETUP
+
+Please create the following Supabase table called “users”:
+- id (uuid) – primary key, auto populated by Supabase Auth user ID
+- email (text)
+- name (text)
+
+When users sign up using magic link, automatically insert a new row with their email. If they already exist, just read their record.
+
+When users enter name + email (without auth), store both into this same `users` table.
+
+---
+
+🔒 ROUTE PROTECTION
+
+I need to implement Supabase authentication and data storage for my website while maintaining the current visual design. Please implement the following functionality:
+
+1. SUPABASE SETUP AND CONFIGURATION:
+   - Initialize Supabase client in a separate JavaScript file:
+     ```javascript
+     import { createClient } from '@supabase/supabase-js'
+     
+     const supabaseUrl = 'https://psxbdelkngqivjmatfnx.supabase.co'
+     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzeGJkZWxrbmdxaXZqbWF0Zm54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQxMTI4MjQsImV4cCI6MjA1OTY4ODgyNH0.je-TEJIvZ0S-cdOBx46rDAJ4KYRiEF4EW_Dts2c2Wo0'
+     
+     export const supabase = createClient(supabaseUrl, supabaseKey)
+     ```
+   - Import this client wherever authentication or data operations are needed
+
+2. AUTHENTICATION IMPLEMENTATION:
+   - Maintain the current login UI with name and email fields (no password)
+   - Implement two authentication flows:
+     * Standard login with name/email (temporary session)
+     * Magic link login (persistent session)
+
+3. STANDARD LOGIN (NAME/EMAIL):
+   - When user submits the login form with name and email:
+     ```javascript
+     async function handleStandardLogin(name, email) {
+       // Create a temporary session
+       const sessionData = {
+         name: name,
+         email: email,
+         isTemporary: true,
+         loginTime: new Date().toISOString()
+       }
+       
+       // Store in localStorage for temporary access
+       localStorage.setItem('tempSession', JSON.stringify(sessionData))
+       
+       // Also store in Supabase for our records
+       const { data, error } = await supabase
+         .from('user_profiles')
+         .upsert({ 
+           email: email, 
+           name: name, 
+           last_login: new Date().toISOString(),
+           is_temporary: true
+         }, { 
+           onConflict: 'email' 
+         })
+       
+       // Redirect to dashboard
+       window.location.href = "/dashboard/"
+     }
+     ```
+   - On dashboard load, check for temporary session:
+     ```javascript
+     function checkAuth() {
+       const tempSession = JSON.parse(localStorage.getItem('tempSession'))
+       const supabaseSession = supabase.auth.session()
+       
+       if (tempSession && tempSession.isTemporary) {
+         // User is logged in with temporary session
+         return { user: tempSession, isTemporary: true }
+       } else if (supabaseSession) {
+         // User is logged in with Supabase (magic link)
+         return { user: supabaseSession.user, isTemporary: false }
+       } else {
+         // Not logged in, redirect to auth page
+         window.location.href = "/auth/"
+         return null
+       }
+     }
+     ```
+
+4. MAGIC LINK AUTHENTICATION:
+   - When user requests a magic link:
+     ```javascript
+     async function sendMagicLink(email) {
+       const { error } = await supabase.auth.signIn({
+         email: email
+       })
+       
+       if (error) {
+         console.error('Error sending magic link:', error)
+         return false
+       }
+       
+       // Show success message to user
+       return true
+     }
+     ```
+   - Configure Supabase Auth settings:
+     * Site URL: Your website URL
+     * Redirect URLs: Add your dashboard URL (e.g., https://yourdomain.com/dashboard/)
+     * Enable Email provider
+     * Set up SMTP with your SendGrid credentials
+
+5. SESSION HANDLING FOR PERSISTENT AUTH:
+   - Listen for auth state changes:
+     ```javascript
+     supabase.auth.onAuthStateChange((event, session) => {
+       if (event === 'SIGNED_IN') {
+         // Check if there was a previous temporary session
+         const tempSession = JSON.parse(localStorage.getItem('tempSession'))
+         
+         if (tempSession && tempSession.isTemporary) {
+           // User had a temporary session before - need to migrate data
+           migrateTemporaryData(tempSession.email, session.user.id)
+         }
+         
+         // Clear any temporary session
+         localStorage.removeItem('tempSession')
+         
+         // Update user profile in database
+         updateUserProfile(session.user)
+         
+         // Redirect to dashboard if not already there
+         if (!window.location.pathname.includes('/dashboard')) {
+           window.location.href = "/dashboard/"
+         }
+       } else if (event === 'SIGNED_OUT') {
+         // Handle sign out
+         window.location.href = "/auth/"
+       }
+     })
+     ```
+
+6. CRITICAL: MIGRATING TEMPORARY DATA TO PERMANENT:
+   - Create a function to migrate all temporary data when user authenticates:
+     ```javascript
+     async function migrateTemporaryData(tempEmail, permanentUserId) {
+       // Start a transaction or perform operations in sequence
+       
+       // 1. Update user profile
+       await supabase
+         .from('user_profiles')
+         .update({ 
+           user_id: permanentUserId,
+           is_temporary: false 
+         })
+         .eq('email', tempEmail)
+       
+       // 2. Migrate priority content data
+       await supabase
+         .from('priority_content')
+         .update({ user_id: permanentUserId, is_temporary: false })
+         .eq('email', tempEmail)
+         .is('user_id', null)
+       
+       // 3. Migrate campaign data
+       await supabase
+         .from('campaigns')
+         .update({ user_id: permanentUserId, is_temporary: false })
+         .eq('email', tempEmail)
+         .is('user_id', null)
+       
+       // 4. Migrate any other relevant data tables
+       // ...
+       
+       console.log('Successfully migrated temporary data to permanent account')
+     }
+     ```
+
+7. DATA PERSISTENCE FOR DASHBOARD CONTENT:
+   - Save Priority Content:
+     ```javascript
+     async function savePriorityContent(contentData) {
+       const auth = checkAuth()
+       if (!auth) return
+       
+       const { data, error } = await supabase
+         .from('priority_content')
+         .insert({
+           user_id: auth.isTemporary ? null : auth.user.id,
+           email: auth.isTemporary ? auth.user.email : auth.user.email,
+           url: contentData.url,
+           content_type: contentData.contentType,
+           goal: contentData.goal,
+           status: contentData.status,
+           target_keyword: contentData.targetKeyword,
+           notes: contentData.notes,
+           created_at: new Date().toISOString(),
+           is_temporary: auth.isTemporary
+         })
+       
+       return { data, error }
+     }
+     ```
+   
+   - Save Campaign:
+     ```javascript
+     async function saveCampaign(campaignData) {
+       const auth = checkAuth()
+       if (!auth) return
+       
+       const { data, error } = await supabase
+         .from('campaigns')
+         .insert({
+           user_id: auth.isTemporary ? null : auth.user.id,
+           email: auth.isTemporary ? auth.user.email : auth.user.email,
+           goal: campaignData.goal,
+           monthly_budget: campaignData.monthlyBudget,
+           campaign_duration: campaignData.campaignDuration,
+           link_velocity: campaignData.linkVelocity,
+           article_type: campaignData.articleType,
+           created_at: new Date().toISOString(),
+           status: 'active',
+           is_temporary: auth.isTemporary
+         })
+       
+       return { data, error }
+     }
+     ```
+
+8. BOOK A CALL INTEGRATION:
+   - When user completes the multi-step booking form:
+     ```javascript
+     async function saveStrategyCallRequest(formData) {
+       // Check if user is logged in
+       const auth = checkAuth()
+       const userId = auth && !auth.isTemporary ? auth.user.id : null
+       
+       const { data, error } = await supabase
+         .from('strategy_call_submissions')
+         .insert({
+           user_id: userId,
+           company_stage: formData.companyStage,
+           niche: formData.niche,
+           challenges: formData.challenges,
+           monthly_budget: formData.monthlyBudget,
+           name: formData.name,
+           email: formData.email,
+           created_at: new Date().toISOString(),
+           status: 'pending'
+         })
+       
+       // After saving to Supabase, redirect to Calendly
+       if (!error) {
+         window.location.href = "https://calendly.com/russell-jba/30min"
+       }
+       
+       return { data, error }
+     }
+     ```
+
+9. LOADING USER DATA:
+   - Fetch data for dashboard:
+     ```javascript
+     async function loadUserDashboardData() {
+       const auth = checkAuth()
+       if (!auth) return
+       
+       // Query priorityContent
+       const { data: priorityContent, error: priorityError } = await supabase
+         .from('priority_content')
+         .select('*')
+         .eq('email', auth.user.email)
+       
+       // Query campaigns
+       const { data: campaigns, error: campaignError } = await supabase
+         .from('campaigns')
+         .select('*')
+         .eq('email', auth.user.email)
+       
+       return {
+         priorityContent: priorityContent || [],
+         campaigns: campaigns || []
+       }
+     }
+     ```
+
+10. TEMPORARY TO PERMANENT TRANSITION UI:
+    - Show magic link option in dashboard for temporary users:
+     ```javascript
+     function renderMagicLinkOption() {
+       const auth = checkAuth()
+       if (auth && auth.isTemporary) {
+         // Render a banner or notification in the dashboard
+         const bannerHTML = `
+           <div class="magic-link-banner">
+             <p>Your progress is temporary. Save your work permanently by signing in with a magic link.</p>
+             <button id="sendMagicLinkBtn">Send Magic Link</button>
+           </div>
+         `
+         document.querySelector('#dashboardContainer').insertAdjacentHTML('afterbegin', bannerHTML)
+         
+         // Add event listener
+         document.querySelector('#sendMagicLinkBtn').addEventListener('click', () => {
+           sendMagicLink(auth.user.email)
+             .then(success => {
+               if (success) {
+                 // Show success message
+                 alert("Magic link sent! Check your email to permanently save your data.")
+               }
+             })
+         })
+       }
+     }
+     ```
+
+11. LOGOUT FUNCTIONALITY:
+    - For temporary sessions:
+     ```javascript
+     function logoutTemporarySession() {
+       // Show warning modal
+       const confirmed = confirm("Are you sure? Your progress is not saved. To save your progress, login using the magic link.")
+       
+       if (confirmed) {
+         localStorage.removeItem('tempSession')
+         window.location.href = "/auth/"
+       } else {
+         // Show magic link option
+         const email = JSON.parse(localStorage.getItem('tempSession')).email
+         sendMagicLink(email)
+           .then(success => {
+             if (success) {
+               alert("Magic link sent! Check your email to permanently save your data.")
+             }
+           })
+       }
+     }
+     ```
+   
+    - For Supabase authenticated sessions:
+     ```javascript
+     async function logoutPersistentSession() {
+       await supabase.auth.signOut()
+       window.location.href = "/auth/"
+     }
+     ```
+
+12. IMPLEMENT SECURITY RULES IN SUPABASE:
+    - Add is_temporary flag to all tables
+    - Row-level security policies for each table:
+      * Allow users to read their own data (by user_id or email)
+      * Allow users to write their own data
+      * Allow anonymous writes for strategy call submissions
+
+Please implement these functions throughout the application while maintaining the current visual design. The goal is to add data persistence without changing the user interface, with special attention to properly migrating temporary data to permanent accounts when users authenticate via magic link.

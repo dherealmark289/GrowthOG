@@ -1,0 +1,143 @@
+I need to update my pricing page (/pricing/) to match the reference screenshot with pixel-perfect accuracy. Please implement these precise specifications:
+
+1. LAYOUT STRUCTURE:
+   - Main container: 100% width with 32px padding on left and right sides
+   - Border: 1px solid #E5E7EB (light gray) with 12px border radius
+   - Container max-width: 1280px, centered on page
+   - Overall page padding: 40px top and bottom
+   - Navigation bar bottom border: 1px solid #E5E7EB with 1px thickness
+   - Ensure content fits viewport at 100% zoom with no horizontal scrollbar
+
+2. HEADER SECTION:
+   - Main heading "Link Building Packages": font-size: 36px, font-weight: 800, color: #000000, line-height: 1.2
+   - Subheading "Choose the right plan for your SaaS growth stage": font-size: 18px, font-weight: 400, color: #4B5563, line-height: 1.4
+   - Vertical spacing between heading and subheading: 12px
+   - Vertical spacing between subheading and monthly packages section: 32px
+
+3. MONTHLY PACKAGES SECTION:
+   - Section title "Monthly Packages": font-size: 20px, font-weight: 700, color: #000000, line-height: 1.3
+   - Subtext "Get fully managed monthly link building solution": font-size: 16px, font-weight: 400, color: #6B7280, line-height: 1.5
+   - Spacing between title and subtext: 8px
+   - Spacing between subtext and pricing cards: 24px
+
+4. PRICING CARDS:
+   - 3-column grid layout with 24px gap between cards
+   - Each card: Equal width (33.33% minus gaps), border: 1px solid #E5E7EB, border-radius: 8px, background-color: #FFFFFF
+   - Card padding: 24px
+   - Card box-shadow: 0 1px 3px rgba(0,0,0,0.05)
+   - Equal height for all cards (maintain alignment)
+
+5. PRICING CARD HEADERS:
+   - Plan name: font-size: 24px, font-weight: 700, color: #000000
+   - Price: font-size: 32px, font-weight: 800, color: #000000
+   - "/mo" text: font-size: 16px, font-weight: 400, color: #6B7280
+   - Links indicator: font-size: 14px, font-weight: 500, color: #6B7280
+   - Links indicator background: #F3F4F6, padding: 4px 8px, border-radius: 4px
+   - Spacing between plan name and price: 8px
+   - Spacing between price and features list: 24px
+
+6. LINK INDICATORS:
+   - Container: Background-color: #F3F4F6, border-radius: 4px, padding: 4px 8px, display: inline-flex
+   - Star icon: Color #FFC107 (for filled stars), #E5E7EB (for empty stars), size: 14px
+   - Count text: "10+ Links Per Month" - font-size: 14px, font-weight: 500, color: #6B7280
+   - Spacing between stars and text: 6px
+
+7. FEATURE LISTS:
+   - Bullet points: Solid black circles, 6px diameter
+   - Feature text: font-size: 15px, color: #000000, font-weight: 400, line-height: 1.6
+   - Spacing between features: 16px
+   - Left padding for feature text: 8px (from bullet)
+   - Total left padding for feature items: 24px
+
+8. PRICING CARD BUTTONS:
+   - Background-color: #000000 for "Build Campaign" buttons
+   - Text color: #FFFFFF
+   - Font-size: 16px, font-weight: 600
+   - Padding: 12px 24px
+   - Border-radius: 6px
+   - Width: 100% of card
+   - Margin-top: 24px
+   - Hover state: background-color: #333333
+   - Center-aligned text
+
+9. FAQ SECTION:
+   - Section title "Link Building 101": font-size: 24px, font-weight: 700, color: #000000
+   - Subtext "Frequently asked questions about our link building process": font-size: 16px, font-weight: 400, color: #6B7280
+   - Spacing between title and subtext: 8px
+   - Spacing between subtext and first accordion item: 24px
+
+10. ACCORDION ITEMS:
+    - Question text: font-size: 16px, font-weight: 600, color: #000000
+    - Border-bottom: 1px solid #E5E7EB
+    - Padding: 16px 0
+    - Accordion icon: Chevron down/up, 16px size, color: #000000
+    - Hover state: background-color: #F9FAFB
+    - Expanded state indicator: Rotate chevron 180 degrees
+
+11. ABOUT SECTION:
+    - Section title "About GrowthOG": font-size: 24px, font-weight: 700, color: #000000
+    - Subtext "Learn more about how we work and what makes us different": font-size: 16px, font-weight: 400, color: #6B7280
+    - Spacing between title and subtext: 8px
+    - Spacing between subtext and first accordion item: 24px
+    - Same accordion styling as FAQ section
+
+12. PRICING DETAILS:
+    - Startup plan: "$2,999/mo", "8+ Links Per Month"
+    - Growth plan: "$9,999/mo", "25+ Links Per Month"
+    - Enterprise plan: "$19,999/mo", "40+ Links Per Month"
+    - Star ratings: 
+      * Startup: 3 filled stars
+      * Growth: 4 filled stars
+      * Enterprise: 5 filled stars
+
+13. FEATURE SPECIFICATIONS:
+    - Startup plan features:
+      * Average of 10-20 Links
+      * Competitor Backlink Gap Analysis
+      * Custom Reporting Dashboard
+      * Detailed Link Planning
+      * Keyword Analysis
+
+    - Growth plan features:
+      * Average of 20-40 Links
+      * Authority Links Included
+      * Anchor Text Optimization
+      * Target Page Planning
+      * Identical Linking Optimization
+
+    - Enterprise plan features:
+      * Average of 50-80+ Links
+      * Authority Links Included
+      * Top Editorial Audit
+      * Multi-domain Distribution
+      * VP Call with Founder
+
+14. PAGINATION:
+    - Pagination container: Centered, margin-top: 40px
+    - Pagination buttons: Width: 36px, height: 36px, border: 1px solid #E5E7EB, border-radius: 6px
+    - Active pagination: Background-color: #000000, color: #FFFFFF
+    - Inactive pagination: Background-color: #FFFFFF, color: #000000
+    - Font-size: 14px, font-weight: 500
+    - Spacing between pagination buttons: 8px
+
+15. TYPOGRAPHY SYSTEM:
+    - Font family: Same system font stack as other pages - "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
+    - Maintain consistent font sizing and weights with other pages
+
+16. NAVIGATION AND HEADER:
+    - Match exactly the same header styling as the home and services pages
+    - GrowthOG logo: Same size and positioning
+    - Navigation links: Same styling and spacing
+    - "Access Dashboard" and "Book a Strategy Call" buttons: Same styling as other pages
+
+17. SPACING AND SECTION BREAKS:
+    - Space between pricing cards and FAQ section: 48px
+    - Space between FAQ section and About section: 48px
+    - Inner spacing for each section: Consistent with all other pages
+
+18. CROSS-PAGE CONSISTENCY:
+    - Maintain the same header, navigation, footer, and border treatments as other pages
+    - Use identical button styles, typography, and spacing systems
+    - Ensure all hover and active states match other pages
+
+Please implement with pixel-perfect precision to match the reference screenshot. Every detail from spacing, font sizes, colors, and interactive elements should exactly match the design.

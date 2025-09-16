@@ -1,0 +1,105 @@
+I need to update my website's appearance to match these reference screenshots exactly. Please implement the following precise specifications:
+
+1. LAYOUT STRUCTURE:
+   - Main container: 100% width with 32px padding on left and right sides
+   - Border: 1px solid #E5E7EB (light gray) with 12px border radius
+   - Page container: Ensure content fits viewport at 100% zoom with no horizontal scrollbar
+   - Navigation bar bottom border: 1px solid #E5E7EB
+   - Vertical spacing between main sections: 48px exactly
+   - Horizontal spacing between left and right panels: 24px exactly
+   - Overall container max-width: 1280px, centered on page
+
+2. LOGO SECTION:
+   - Section title "TRUSTED BY LEADING SAAS BRANDS": 14px, uppercase, #6B7280 (medium gray), font-weight: 600
+   - Logo container: 3-column grid with 40px gap between logos
+   - Logo dimensions: Height between 24-32px (maintain aspect ratio)
+   - Logos should be grayscale with opacity of 0.7
+   - Use these exact image URLs:
+     * Semrush: https://headlesswp.growthog.com/wp-content/uploads/2024/10/semrush-logo.png
+     * Monday.com: https://headlesswp.growthog.com/wp-content/uploads/2024/10/Monday2.png
+     * ClickUp: https://headlesswp.growthog.com/wp-content/uploads/2024/10/clickup.png
+     * HubSpot: https://headlesswp.growthog.com/wp-content/uploads/2024/10/hubspot.png
+     * AppsFlyer: https://headlesswp.growthog.com/wp-content/uploads/2024/10/idYux3LgxW_logos.png
+     * Nextiva: https://headlesswp.growthog.com/wp-content/uploads/2024/10/nextiva-1.png
+
+3. CONTAINERS AND BORDERS:
+   - All container borders: 1px solid #E5E7EB
+   - Container border radius: 12px exactly
+   - Container background: #FFFFFF
+   - Container box-shadow: 0 1px 3px rgba(0,0,0,0.05)
+   - Inner padding for all containers: 32px
+   - Gap between left content panel and right social proof panel: 32px
+
+4. TABS SECTION:
+   - Tab container: Full width, border-bottom: 1px solid #E5E7EB
+   - Tab buttons: Equal width (33.33%), padding 12px 0
+   - Active tab (EARLY): Background-color: #000000, color: #FFFFFF, font-weight: 600, font-size: 14px
+   - Inactive tabs (GROWTH/ESTABLISHED): Background-color: transparent, color: #6B7280, font-weight: 500, font-size: 14px
+   - Tab transition: 0.2s ease-in-out for hover states
+
+5. CONTENT ORGANIZATION:
+   - Left panel width: 50% of container width
+   - Right panel width: 50% of container width
+   - Main heading "Links That Drive SaaS Growth": font-size: 42px, font-weight: 800, color: #000000, line-height: 1.2
+   - Subtitle text: font-size: 18px, line-height: 1.5, color: #4B5563, font-weight: 400
+   - Section labels (like "OUR IMPACT"): font-size: 14px, font-weight: 600, color: #6B7280, text-transform: uppercase
+
+6. METRICS DISPLAY:
+   - Metric numbers (3,402+, 142%, 27+): font-size: 36px, font-weight: 800, color: #000000
+   - Metric descriptions: font-size: 14px, font-weight: 500, color: #6B7280, line-height: 1.4
+   - Horizontal spacing between metrics: 24px
+   - Vertical spacing between number and description: 8px
+
+7. BUTTONS AND CALLS-TO-ACTION:
+   - Primary button ("Build My Link Pipeline"):
+     * Border: 1px solid #000000
+     * Background: transparent
+     * Color: #000000
+     * Font-size: 16px
+     * Font-weight: 600
+     * Padding: 12px 24px
+     * Border-radius: 6px
+     * Hover state: background-color: rgba(0,0,0,0.05)
+   
+   - Secondary button ("See Early-Stage SaaS Plan"):
+     * Border: none
+     * Background: #000000
+     * Color: #FFFFFF
+     * Font-size: 16px
+     * Font-weight: 600
+     * Padding: 12px 24px
+     * Border-radius: 6px
+     * Hover state: background-color: #333333
+
+8. NAVIGATION AND HEADER:
+   - GrowthOG logo: 140px width (maintain aspect ratio)
+   - Navigation links: font-size: 16px, font-weight: 500, color: #4B5563, spacing: 24px between items
+   - "Access Dashboard" button: background: transparent, border: 1px solid #E5E7EB, color: #000000, padding: 8px 16px
+   - "Book a Strategy Call" button: background: #000000, color: #FFFFFF, padding: 8px 16px, border-radius: 6px
+
+9. TYPOGRAPHY SYSTEM:
+   - Font family: Use system font stack - "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif
+   - H1 (main heading): 42px, weight 800
+   - H2 ("Early-Stage SaaS"): 24px, weight 700
+   - Body text: 16px, weight 400, line-height 1.5
+   - Small text (metric descriptions): 14px, weight 500
+   - Button text: 16px, weight 600
+   - Tag text: 14px, weight 600, uppercase
+
+10. CHECKLIST ITEMS:
+    - Checkmark icon: SVG with #000000 color, 18px size
+    - Checklist text: font-size: 16px, color: #000000, font-weight: 500, line-height: 1.5
+    - Spacing between checklist items: 16px
+    - Left padding for text: 8px (from checkmark)
+
+11. RESPONSIVE ADJUSTMENTS:
+    - Desktop breakpoint (>1024px): Layout as described above
+    - Container padding on desktop: 32px horizontal, 40px vertical
+    - Max content width: 1280px centered
+
+12. SPECIFIC COMPONENT STYLING:
+    - "Early-Stage SaaS" subtitle: font-size: 24px, font-weight: 700, color: #000000
+    - "Pre-Seed to Series A" text: font-size: 16px, color: #6B7280, font-weight: 400
+    - Ensure padding between subtitle and checklist: 24px
+
+Please ensure pixel-perfect implementation of these specifications. The goal is to make the website visually identical to the reference screenshots with proper spacing, alignment, and responsive behavior.

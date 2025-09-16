@@ -1,0 +1,430 @@
+import { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Layout from '../components/layout/Layout';
+import { useAuth } from '../context/AuthContext';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
+
+export default function Auth() {
+  const router = useRouter();
+  const { user, loading, signInWithMagicLink, isTemporarySession } = useAuth();
+  
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState('credentials');
+  
+  // States for modals
+  const [showWelcomeModal, setShowWelcomeModal] = useState(false);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [feedbackText, setFeedbackText] = useState('');
+  
+  // References for validation
+  const nameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const magicEmailInputRef = useRef(null);
+  const feedbackTextareaRef = useRef(null);
+  
+  // Check localStorage on component mount to determine if welcome modal should be shown
+  useEffect(() => {
+    const hasSeenWelcomeModal = localStorage.getItem('hasSeenWelcomeModal');
+    if (!hasSeenWelcomeModal) {
+      setShowWelcomeModal(true);
+    }
+  }, []);
+  
+  // Redirect if already authenticated with permanent session
+  useEffect(() => {
+    if (user && !loading && !isTemporarySession) {
+      router.push('/dashboard/priority-content');
+    }
+  }, [user, loading, isTemporarySession, router]);
+  
+  const handleCredentialsSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!validateName() || !validateEmail(emailInputRef.current)) {
+      return;
+    }
+    
+    // Store user info in localStorage for temporary session
+    const rememberMe = e.target.elements['remember-me']?.checked;
+    if (name && email) {
+      localStorage.setItem('tempUserName', name);
+      localStorage.setItem('tempUserEmail', email);
+      if (rememberMe) {
+        localStorage.setItem('rememberUser', 'true');
+      }
+    }
+    
+    // Create a temporary session
+    router.push('/dashboard');
+  };
+  
+  const handleMagicLinkSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Validate email
+    if (!validateEmail(magicEmailInputRef.current)) {
+      return;
+    }
+    
+    setIsSubmitting(true);
+    setError('');
+    
+    try {
+      const { error } = await signInWithMagicLink(email);
+      
+      if (error) {
+        throw new Error(error);
+      }
+      
+      // Magic link sent successfully
+      setMagicLinkSent(true);
+    } catch (err) {
+      console.error('Magic link error:', err);
+      setError(err.message || 'An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  const handleFeedbackSubmit = () => {
+    if (!feedbackText.trim()) {
+      feedbackTextareaRef.current.classList.add('border-red-500');
+      return;
+    }
+    
+    // Here you would normally send the feedback to your server
+    console.log('Feedback submitted:', feedbackText);
+    
+    // Close modal and reset
+    setShowFeedbackModal(false);
+    setFeedbackText('');
+  };
+  
+  const validateName = () => {
+    if (!name.trim()) {
+      nameInputRef.current.classList.add('border-red-500');
+      return false;
+    }
+    nameInputRef.current.classList.remove('border-red-500');
+    return true;
+  };
+  
+  const validateEmail = (inputRef) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim() || !emailRegex.test(email)) {
+      inputRef.classList.add('border-red-500');
+      return false;
+    }
+    inputRef.classList.remove('border-red-500');
+    return true;
+  };
+  
+  const handleDontShowAgain = () => {
+    localStorage.setItem('hasSeenWelcomeModal', 'true');
+    setShowWelcomeModal(false);
+  };
+  
+  const handleGotIt = () => {
+    setShowWelcomeModal(false);
+  };
+  
+  if (loading) {
+    return (
+      <Layout
+        seo={{
+          title: 'Sign In | GrowthOG',
+          description: 'Sign in to your GrowthOG account.',
+        }}
+      >
+        <div className="min-h-screen flex items-center justify-center bg-white">
+          <LoadingSpinner size="large" />
+        </div>
+      </Layout>
+    );
+  }
+  
+  return (
+    <Layout
+      seo={{
+        title: 'Sign In | GrowthOG',
+        description: 'Sign in to your GrowthOG account.',
+      }}
+    >
+      {/* Subheader */}
+      <div className="w-full border-b border-[#E5E7EB] bg-white">
+        <div className="max-w-[1280px] mx-auto px-4 py-2 flex justify-between items-center">
+          <Link href="/" className="text-[14px] text-[#2563EB] hover:underline flex items-center">
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Website
+          </Link>
+          <div className="text-[14px] text-[#6B7280]">
+            Beta dashboard in progress. Bugs expected - your feedback helps us improve
+          </div>
+          <button 
+            onClick={() => setShowFeedbackModal(true)}
+            className="text-[14px] border border-[#E5E7EB] px-2 py-1 rounded-md hover:bg-gray-50"
+          >
+            Feedback
+          </button>
+        </div>
+      </div>
+      
+      <div className="min-h-screen bg-white py-12">
+        <div className="max-w-[560px] mx-auto px-4">
+          <div className="border border-[#E5E7EB] rounded-[12px] bg-white p-8 md:p-8">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h1 className="text-[24px] font-bold text-black">
+                Welcome to GrowthOG Dashboard
+              </h1>
+              <p className="text-[16px] text-[#6B7280] mt-1">
+                Experience what it's like to work with us
+              </p>
+            </div>
+            
+            {/* Auth Forms Container */}
+            <div className="border border-[#E5E7EB] rounded-[8px] bg-white p-6">
+              {/* Form Tabs */}
+              <div className="flex border-b border-[#E5E7EB] mb-6">
+                <button
+                  onClick={() => setActiveTab('credentials')}
+                  className={`flex-1 py-2 text-[14px] font-semibold text-left ${
+                    activeTab === 'credentials' ? 'text-black' : 'text-[#6B7280]'
+                  }`}
+                >
+                  Credentials
+                </button>
+                <button
+                  onClick={() => setActiveTab('magic-link')}
+                  className={`flex-1 py-2 text-[14px] font-semibold text-right ${
+                    activeTab === 'magic-link' ? 'text-black' : 'text-[#6B7280]'
+                  }`}
+                >
+                  Magic Link
+                </button>
+              </div>
+              
+              {/* Credentials Form */}
+              {activeTab === 'credentials' && (
+                <form onSubmit={handleCredentialsSubmit}>
+                  <div className="mb-4">
+                    <label htmlFor="name" className="block text-[14px] font-semibold text-black mb-1">
+                      Name
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        ref={nameInputRef}
+                        placeholder="Enter your name"
+                        className="w-full h-[40px] border border-[#D1D5DB] rounded-[6px] px-3 text-[14px] focus:outline-none focus:ring-1 focus:ring-black"
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-500 hidden"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <label htmlFor="email" className="block text-[14px] font-semibold text-black mb-1">
+                      Email
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        ref={emailInputRef}
+                        placeholder="Enter your email"
+                        className="w-full h-[40px] border border-[#D1D5DB] rounded-[6px] px-3 text-[14px] focus:outline-none focus:ring-1 focus:ring-black"
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-500 hidden"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center mb-4">
+                    <input
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 border-[#D1D5DB] rounded text-black focus:ring-black"
+                    />
+                    <label htmlFor="remember-me" className="ml-2 block text-[14px] text-[#374151]">
+                      Remember me
+                    </label>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    className="w-full bg-black text-white text-[14px] font-semibold py-3 rounded-[6px] hover:bg-gray-800 transition-colors"
+                  >
+                    Sign In
+                  </button>
+                </form>
+              )}
+              
+              {/* Magic Link Form */}
+              {activeTab === 'magic-link' && (
+                <form onSubmit={handleMagicLinkSubmit}>
+                  <div className="mb-4">
+                    <label htmlFor="magic-email" className="block text-[14px] font-semibold text-black mb-1">
+                      Email
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="magic-email"
+                        name="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        ref={magicEmailInputRef}
+                        placeholder="Enter your email"
+                        className="w-full h-[40px] border border-[#D1D5DB] rounded-[6px] px-3 text-[14px] focus:outline-none focus:ring-1 focus:ring-black"
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-red-500 hidden"></div>
+                    </div>
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-black text-white text-[14px] font-semibold py-3 rounded-[6px] hover:bg-gray-800 transition-colors flex items-center justify-center"
+                  >
+                    {isSubmitting ? (
+                      <span className="flex items-center">
+                        <LoadingSpinner size="small" color="white" />
+                        <span className="ml-2">Sending...</span>
+                      </span>
+                    ) : (
+                      <>
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        Send Magic Link
+                      </>
+                    )}
+                  </button>
+                  
+                  <div className="text-center mt-3 text-[14px] text-[#6B7280]">
+                    We'll email you a magic link for passwordless sign in
+                  </div>
+                </form>
+              )}
+              
+              {/* Bottom Link */}
+              <div className="text-center mt-4 text-[14px]">
+                Don't have an account? <Link href="/signup" className="text-[#2563EB] hover:underline">Sign up</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Welcome Modal */}
+      {showWelcomeModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+          <div className="bg-white rounded-[8px] w-[400px] shadow-lg relative">
+            <button 
+              onClick={() => setShowWelcomeModal(false)}
+              className="absolute top-3 right-3 text-[20px] text-[#9CA3AF] hover:text-gray-700"
+            >
+              ×
+            </button>
+            
+            <div className="p-6">
+              <h2 className="text-[18px] font-bold text-black">Welcome to the GrowthOG Dashboard</h2>
+              <p className="text-[14px] text-[#6B7280] mt-1">
+                This is a beta version of our dashboard. Thank you for being an early user.
+              </p>
+              
+              <div className="mt-4 space-y-3">
+                <p className="text-[14px] text-black leading-normal">
+                  The dashboard is still in development, so you may encounter errors in your account features. Your feedback is extremely valuable to us as we refine the experience.
+                </p>
+                <p className="text-[14px] text-black leading-normal">
+                  Please use the feedback button if you encounter any issues or have suggestions for improvements.
+                </p>
+              </div>
+              
+              <div className="mt-6 flex justify-end space-x-3">
+                <button 
+                  onClick={handleDontShowAgain}
+                  className="px-4 py-2 text-[14px] text-[#374151] border border-[#E5E7EB] rounded-[6px] hover:bg-gray-50"
+                >
+                  Don't show again
+                </button>
+                <button 
+                  onClick={handleGotIt}
+                  className="px-4 py-2 text-[14px] text-white bg-[#0F172A] rounded-[6px] hover:bg-gray-800"
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Feedback Modal */}
+      {showFeedbackModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+          <div className="bg-white rounded-[8px] w-[450px] shadow-lg relative">
+            <button 
+              onClick={() => setShowFeedbackModal(false)}
+              className="absolute top-3 right-3 text-[20px] text-[#9CA3AF] hover:text-gray-700"
+            >
+              ×
+            </button>
+            
+            <div className="p-6">
+              <h2 className="text-[18px] font-bold text-black">Share Your Feedback</h2>
+              <p className="text-[14px] text-[#6B7280] mt-1">
+                Your feedback helps us improve the dashboard experience for everyone.
+              </p>
+              
+              <div className="mt-4">
+                <label htmlFor="feedback" className="block text-[14px] font-semibold text-black mb-1">
+                  What can we improve?
+                </label>
+                <textarea
+                  id="feedback"
+                  value={feedbackText}
+                  onChange={(e) => setFeedbackText(e.target.value)}
+                  ref={feedbackTextareaRef}
+                  placeholder="Tell us about your experiences, bugs you've encountered, or features you'd like to see."
+                  className="w-full h-[120px] border border-[#D1D5DB] rounded-[6px] p-3 text-[14px] focus:outline-none focus:ring-1 focus:ring-black resize-none"
+                ></textarea>
+              </div>
+              
+              <div className="mt-6 flex justify-end space-x-3">
+                <button 
+                  onClick={() => setShowFeedbackModal(false)}
+                  className="px-4 py-2 text-[14px] text-[#374151] border border-[#E5E7EB] rounded-[6px] hover:bg-gray-50"
+                >
+                  Cancel
+                </button>
+                <button 
+                  onClick={handleFeedbackSubmit}
+                  className="px-4 py-2 text-[14px] text-white bg-[#94A3B8] rounded-[6px] hover:bg-gray-500"
+                >
+                  Submit Feedback
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </Layout>
+  );
+}

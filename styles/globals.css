@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-secondary-800 bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-secondary-900;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-full;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-secondary-700 border-secondary-300 hover:bg-secondary-50 focus:ring-primary-500;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500;
+  }
+  
+  .form-input {
+    @apply block w-full px-3 py-2 sm:px-4 sm:py-3 border-secondary-300 rounded-lg shadow-sm focus:border-primary-500 focus:ring-primary-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-soft overflow-hidden;
+  }
+  
+  .nav-link {
+    @apply font-medium text-secondary-600 hover:text-primary-600 transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply font-medium text-primary-600;
+  }
+
+  /* Responsive text sizing for improved readability */
+  .text-responsive-xl {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-responsive-md {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  /* Prevent overflow issues on small screens */
+  .overflow-fix {
+    @apply overflow-x-hidden max-w-full;
+  }
+
+  /* Responsive padding helpers */
+  .py-responsive {
+    @apply py-4 md:py-6 lg:py-10;
+  }
+
+  .px-responsive {
+    @apply px-3 sm:px-6 lg:px-8;
+  }
+
+  /* Responsive grid layouts */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+
+  /* Blog specific styles */
+  .blog-card {
+    @apply bg-white border-2 border-black rounded-lg overflow-hidden shadow-sm transition-transform duration-200 hover:shadow-md hover:-translate-y-1;
+  }
+  
+  /* Frame and card styling with darkened borders */
+  .frame {
+    @apply border-2 border-black rounded-lg;
+  }
+}

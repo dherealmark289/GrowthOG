@@ -1,0 +1,84 @@
+I need to update my resources page (/resources/) to exactly match the reference design in screenshot 1. My current implementation (screenshot 2) has several differences that need to be fixed. Please implement these precise specifications:
+
+1. LAYOUT STRUCTURE:
+   - Move ALL page content INSIDE the main bordered container (currently some content sits outside)
+   - Main container: 100% width with 32px padding on left and right sides
+   - Border: 1px solid #E5E7EB (light gray) with 12px border radius
+   - Container max-width: 1280px, centered on page
+   - Remove excessive padding/spacing that's currently making everything too spread out
+   - Ensure navigation bar link to "Resources" is properly linked to /resources/ path
+
+2. LEFT SIDEBAR NAVIGATION:
+   - Fixed width: 80px exactly (currently too wide)
+   - Background-color: #0F172A (dark navy blue/almost black) - current shade is too blue
+   - Text should be vertically aligned and centered
+   - "BLOG" text should be uppercase and white (#FFFFFF)
+   - "TOOLS" text should be uppercase and gray (#94A3B8)
+   - Fix vertical rotation of text - text should read from bottom to top
+   - Ensure sidebar extends full height of the content area
+
+3. HEADER SECTION:
+   - Align "Resources" heading flush with the left content area (not centered)
+   - Font-size: 32px, font-weight: 800 (appears bolder in reference)
+   - Ensure subheading "Expert insights on SEO, link-building, and SaaS growth" is properly aligned
+   - Add border-bottom: 1px solid #E5E7EB below this section
+   - Reduce spacing between heading and filter bar (too much in current version)
+
+4. FILTER BAR:
+   - Change from individual buttons to a horizontal inline bar
+   - Remove outer borders from individual filter elements
+   - Add "Filter by:" label before the filters (currently missing)
+   - Font-weight: 600 for the "Filter by:" text
+   - Make filter buttons match reference: simple border, right-aligned dropdown arrows
+   - Ensure search box is right-aligned and matches reference design
+
+5. FEATURED RESOURCE BOX:
+   - Fix layout: should be horizontal 40/60 split (not vertical as in current version)
+   - Left section: dark navy (#0F172A) background with white text
+   - Right section: white background with black text
+   - Add "FEATURED GUIDE" label to top of left section (uppercase, small text)
+   - Ensure "Download Guide" button is styled correctly with border only (no fill)
+   - Align all content in both sections with proper spacing
+
+6. ARTICLE SECTION STYLING:
+   - "Popular Link Building Articles" heading should align with left content edge
+   - Article cards should be in a 2×3 grid (2 columns, 3 rows)
+   - Card styling needs fixing: 
+     * Equal height cards
+     * White background
+     * 1px light gray border
+     * Proper padding (24px)
+     * Remove excessive spacing between elements
+
+7. ARTICLE CARDS:
+   - "LINK BUILDING" label should be all caps and blue (#2563EB)
+   - Article titles should be larger and bolder (18px, font-weight: 700)
+   - Add author images as circular avatars (currently missing)
+   - Format dates consistently (March 15, 2025 format)
+   - Ensure excerpt text has proper line height and spacing
+   - Align all card elements consistently across all cards
+
+8. PAGINATION:
+   - Center pagination at bottom of page
+   - Style page numbers as equal-sized square buttons
+   - Active page (1) should have black background with white text
+   - Inactive pages should have white background with black text
+   - Add proper spacing between pagination buttons
+
+9. OVERALL LAYOUT ADJUSTMENTS:
+   - Fix overall spacing - current layout is too spread out and airy
+   - Ensure all content stays within the bordered container
+   - Maintain proper hierarchy with consistent spacing between sections
+   - Reduce the excessive whitespace currently present throughout the page
+
+10. SPECIFIC CONTENT FIX:
+    - Ensure all article titles and excerpts match exactly as shown in screenshot 1
+    - Featured resource content must match exactly as shown
+    - All text content should be preserved but formatted correctly
+
+11. NAVIGATION CONSISTENCY:
+    - Ensure top navigation bar styling matches the reference
+    - Verify that Resources link in the navigation is properly linked to /resources/
+    - Make sure "Access Dashboard" and "Book a Strategy Call" buttons match reference
+
+Please implement these changes with pixel-perfect precision to make my current resources page (screenshot 2) exactly match the target design (screenshot 1). Focus particularly on fixing the layout structure, sidebar styling, and ensuring all content stays within the main bordered container.

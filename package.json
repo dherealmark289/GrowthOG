@@ -1,0 +1,54 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "next dev -p 5001",
+    "build": "next build",
+    "start": "next start -p 5001",
+    "db:push": "ts-node --project tsconfig.node.json scripts/push-schema.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@headlessui/react": "^2.2.1",
+    "@heroicons/react": "^2.2.0",
+    "@sendgrid/mail": "^8.1.5",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.1.3",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.0",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.11.11",
+    "autoprefixer": "^10.4.14",
+    "cheerio": "^1.0.0",
+    "connect-pg-simple": "^10.0.0",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.6",
+    "drizzle-orm": "^0.41.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "next": "^15.2.4",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pg": "^8.14.1",
+    "postcss": "^8.4.27",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0"
+  }
+}

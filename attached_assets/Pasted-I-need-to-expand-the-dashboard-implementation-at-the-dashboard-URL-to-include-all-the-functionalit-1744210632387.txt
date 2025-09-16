@@ -1,0 +1,230 @@
+I need to expand the dashboard implementation at the /dashboard/ URL to include all the functionality shown in the additional screenshots. Building on the previous requirements, please implement these detailed specifications:
+
+1. CAMPAIGN BUILDER TAB - EXPANDED FUNCTIONALITY (Screenshot 1):
+   - When "Design your campaign" button is clicked, expand the view to show:
+     * Left section: Campaign configuration options
+     * Right section: Campaign strategy preview
+
+   - Left Section Header:
+     * "Design your campaign" - font-size: 18px, font-weight: 700, color: #000000
+     * "Configure the key parameters for your link building campaign." - font-size: 14px, color: #6B7280
+   
+   - Build Your Campaign section:
+     * "Build Your Campaign" - font-size: 16px, font-weight: 700, color: #000000
+     * "Select parameters to create a custom link building strategy" - font-size: 14px, color: #6B7280
+
+   - Goals section:
+     * "Goals" - font-size: 16px, font-weight: 600, color: #000000
+     * Three selectable options: "SEO", "PR", "Both"
+     * Option styling:
+       - Equal width boxes (33.33%)
+       - Border: 1px solid #E5E7EB
+       - Border-radius: 6px
+       - Padding: 12px
+       - Unselected: White background
+       - Selected: White background with thick black border (2px) and black dot indicator in bottom right
+     * Option label styling: font-size: 14px, font-weight: 600
+     * Option description: font-size: 12px, color: #6B7280
+
+   - Monthly Budget section:
+     * "Monthly Budget" - font-size: 16px, font-weight: 600, color: #000000
+     * Three budget options: "$2,500", "$5,000", "$10,000+"
+     * Same styling as Goals options
+     * Include monthly link estimates under each price (e.g., "5-7 links", "8-13 links", "20+ links")
+
+   - Campaign Duration section:
+     * "Campaign Duration" - font-size: 16px, font-weight: 600, color: #000000
+     * Three options: "3 months", "6 months", "12 months"
+     * Same styling as Goals options
+
+   - Link Velocity section:
+     * "Link Velocity" - font-size: 16px, font-weight: 600, color: #000000
+     * Three options: "Conservative", "Balanced", "Aggressive"
+     * Include link rate under each (e.g., "3-5 links/month", "6-10 links/month", "12-15 links/month")
+     * Same styling as Goals options
+
+   - Type of Articles section:
+     * "Type of Articles" - font-size: 16px, font-weight: 600, color: #000000
+     * Three options: "Money Pages", "Resources", "Primary Research"
+     * Include descriptions under each
+     * Same styling as Goals options
+
+   - Bottom buttons:
+     * "Cancel" - left aligned, background: #FFFFFF, border: 1px solid #E5E7EB, color: #374151, font-size: 14px, padding: 8px 16px, border-radius: 6px
+     * "Save Campaign" - right aligned, background: #0F172A (dark navy), color: #FFFFFF, font-size: 14px, padding: 8px 16px, border-radius: 6px
+
+   - Right Section (Campaign Strategy):
+     * "Campaign Strategy" - font-size: 18px, font-weight: 700, color: #000000
+     * "Estimated results based on your selections" - font-size: 14px, color: #6B7280
+     * Display expected metrics with bold values and explanatory text:
+       - "Expected links per month: 5-10 links per month"
+       - "Projected DR average: 55-65"
+       - "Expected timeline for SERP impact: 45-60 days"
+       - "Recommended ratio: 70% SEO, 30% brand authority"
+     * Projected Outcomes section with bullet points:
+       - Black bullet points
+       - Font-size: 14px
+       - Line height: 1.5
+
+2. CAMPAIGN BUILDER - SUCCESS STATE (Screenshot 2):
+   - After "Save Campaign" is clicked, show success message:
+     * Green background (#DCFCE7)
+     * Green checkmark icon
+     * "Campaign Created Successfully" text in bold
+     * "Your campaign has been created and will be reviewed by our team." in regular weight
+     * Border: 1px solid #86EFAC
+     * Border-radius: 6px
+     * Padding: 12px
+
+   - Campaign Summary section:
+     * "Campaign Summary" - font-size: 18px, font-weight: 700, color: #000000
+     * "Edit Campaign" button on right - blue color, font-size: 14px
+     * Two-column layout showing selected options and outcomes:
+       - Left column: Goal, Monthly Budget, Campaign Duration, Link Velocity, Type of Articles
+       - Right column: Expected Links Per Month, Average DR Range, Timeline for SERP Impact, SEO vs Brand Authority Ratio
+     * Download Summary button at bottom right:
+       - Black background, white text
+       - Download icon
+       - "Download Summary" text
+       - Border-radius: 6px
+       - Padding: 8px 16px
+
+3. LINK PROGRESS TAB (Screenshot 3):
+   - When "LINK PROGRESS" tab is clicked, show:
+     * Top metrics cards (4 equal boxes):
+       - Total Links: 27 (+4 this month)
+       - Live Links: 19 (70% success rate)
+       - Pending Links: 8 (Expected in 7-14 days)
+       - Avg Domain Rating: 58 (+2 points from last month)
+     * Card styling:
+       - White background
+       - Border: 1px solid #E5E7EB
+       - Border-radius: 6px
+       - Padding: 16px
+       - Number value: font-size: 24px, font-weight: 700
+       - Description: font-size: 14px, color: #6B7280
+
+   - Recent Links section:
+     * "Recent Links" - font-size: 18px, font-weight: 700, color: #000000
+     * Dropdown filter on right: "All Time" (with down arrow)
+     * "Build New Campaign" and "View All Links" buttons
+     * Links table with columns:
+       - DATE
+       - DOMAIN
+       - DR
+       - LINK FROM
+       - LINK TO
+       - ANCHOR TEXT
+       - STATUS
+       - TYPE
+     * Table header styling:
+       - Font-size: 14px, font-weight: 600, color: #000000
+       - Border-bottom: 1px solid #E5E7EB
+       - Text align left
+       - Padding: 12px 16px
+     * Table row styling:
+       - Border-bottom: 1px solid #E5E7EB
+       - Padding: 12px 16px
+     * Status pills:
+       - Live: Green background
+       - Submitted: Yellow background
+       - Progress: Blue background
+       - Revised: Gray background
+     * Type column: "Editorial" or "Guest Post"
+     * Pagination at bottom with prev/next arrows and progress bar
+
+4. LINK DOMAINS TAB (Screenshot 4):
+   - When "LINK DOMAINS" tab is clicked, show:
+     * Header with action buttons:
+       - "Filter Domains" button on right
+       - "Add Selected to Campaign (0)" button
+     * Domains table with columns:
+       - Checkbox for selection
+       - DOMAIN
+       - DR SCORE
+       - MONTHLY TRAFFIC
+       - PRICE
+       - LINK TYPE
+     * Table header styling:
+       - Font-size: 14px, font-weight: 600, color: #000000
+       - Border-bottom: 1px solid #E5E7EB
+       - Text align left
+       - Padding: 12px 16px
+     * Table row styling:
+       - Border-bottom: 1px solid #E5E7EB
+       - Padding: 12px 16px
+     * Link Type pills:
+       - Editorial: Red background, white text
+       - Guest Post: Dark gray background, white text
+     * Pagination at bottom showing "Page 1 of 2" with prev/next buttons
+
+5. SETTINGS TAB - ACCOUNT SETTINGS (Screenshot 5):
+   - When "SETTINGS" tab is clicked, show:
+     * "Settings" - font-size: 24px, font-weight: 700, color: #000000
+     * "Manage your account settings and preferences" - font-size: 16px, color: #6B7280
+     * Tabs for: "Account", "Brand Settings", "Notifications"
+     * Account Settings section:
+       - "Account Settings" - font-size: 18px, font-weight: 700, color: #000000
+       - "Manage your account details and preferences" - font-size: 14px, color: #6B7280
+       - Show Email and Name information
+       - White card with border
+
+6. SETTINGS TAB - BRAND SETTINGS (Screenshot 6):
+   - When "Brand Settings" subtab is clicked, show:
+     * "Brand Settings" - font-size: 18px, font-weight: 700, color: #000000
+     * "Upload your brand logo and customize appearance" - font-size: 14px, color: #6B7280
+     * Brand Logo section:
+       - "Brand Logo" label - font-size: 14px, font-weight: 600, color: #000000
+       - File upload input with "Choose file. No file chosen." text
+       - Helper text: "Use this URL in your Supabeans email templates to display your brand logo."
+
+7. SETTINGS TAB - NOTIFICATIONS (Screenshot 7):
+   - When "Notifications" subtab is clicked, show:
+     * "Notification Preferences" - font-size: 18px, font-weight: 700, color: #000000
+     * "Manage your notification settings" - font-size: 14px, color: #6B7280
+     * Email Notifications section:
+       - Three toggle options:
+         * Marketing emails - "Receive emails about new products, features, and more."
+         * Social emails - "Receive emails for friend requests, follows, and more."
+         * Update emails - "Receive emails about your account activity and security."
+       - Toggle styling:
+         * On: Blue track with white circle
+         * Off: Gray track with white circle
+       - "Cancel" and "Save preferences" buttons at bottom right
+
+8. LOGOUT WARNING:
+   - When user attempts to log out, show modal warning:
+     * "Are you sure? Your progress is not saved."
+     * "To save your progress, login using the magic link"
+     * Show magic link button below
+     * "Cancel" and "Log out anyway" buttons
+
+9. INTERACTIVITY REQUIREMENTS:
+   - Campaign Builder Interactive Elements:
+     * All option boxes should be clickable to select/unselect
+     * Only one option can be selected in each category
+     * When selecting options, the Campaign Strategy preview should update in real-time
+     * "Save Campaign" should validate that all required options are selected
+   
+   - Link Domains Functionality:
+     * Checkboxes should be clickable to select/unselect domains
+     * "Add Selected to Campaign" button should update count when domains are selected
+     * When domains are added, they should appear in Link Progress tab
+   
+   - Settings Tab Functionality:
+     * Tab switching should work between Account, Brand Settings, and Notifications
+     * Toggles in Notifications should be clickable
+     * File upload in Brand Settings should work
+   
+   - Session Management:
+     * All user data should be stored in session storage
+     * Show appropriate warning before logout
+     * Provide magic link option to save progress permanently
+
+10. RESPONSIVE DESIGN:
+    - All components should adapt to different screen sizes
+    - Tables should have horizontal scroll on small screens
+    - Option boxes should stack on mobile
+    - Maintain legibility and usability at all viewport sizes
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshots. Ensure all functionality works as described, with proper validation and smooth interactions between all dashboard components.

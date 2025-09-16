@@ -1,0 +1,168 @@
+I need to implement the About Us page (/about-us/) to exactly match the visual design shown in the screenshot. Please follow these precise specifications:
+
+1. OVERALL PAGE STRUCTURE:
+   - Main container: 100% width with max-width: 1200px, centered
+   - Border: 1px solid #E5E7EB, border-radius: 12px
+   - Background-color: #FFFFFF
+   - Padding: 32px
+   - Page background: #F9FAFB (light gray)
+
+2. HEADER NAVIGATION:
+   - GrowthOG logo on left (black text, font-weight: 700)
+   - Navigation links: Services, Pricing, Resources, About Us, Dashboard
+   - "myron" user profile on far right with profile icon
+   - Navigation font-size: 16px, color: #4B5563
+   - Active "About Us" link with darker color (#000000)
+   - Bottom border: 1px solid #E5E7EB 
+   - Padding: 16px 0
+
+3. LEFT SIDEBAR NAVIGATION:
+   - Width: 170px
+   - Background-color: #000000 (pure black)
+   - Border-radius: 8px
+   - Height: 100% of content area
+   - Menu items (top to bottom):
+     * "Our Team" - active state
+     * "Our Story"
+     * "Global Presence"
+     * "Our Values"
+     * "Join Us"
+   - Menu item styling:
+     * Active item: White background (#FFFFFF), black text, font-weight: 600
+     * Inactive items: Black background, white text, font-weight: 400
+     * Font-size: 16px
+     * Padding: 16px
+     * Text aligned left with 16px left padding
+     * Height: 56px for each item
+   - Spacing between sidebar and main content: 24px
+
+4. MAIN CONTENT AREA:
+   - Header section:
+     * "Our Team" - font-size: 32px, font-weight: 800, color: #000000
+     * "The SEO and link building experts behind GrowthOG" - font-size: 16px, color: #6B7280
+   - Team grid:
+     * 3-column grid layout
+     * Gap between cards: 16px
+     * Equal width columns (33.33% minus gaps)
+
+5. TEAM MEMBER CARDS:
+   - White background
+   - Border: 1px solid #E5E7EB
+   - Border-radius: 8px
+   - Padding: 24px
+   - Layout (from top to bottom):
+     * Initial circle with team member's initial
+     * Name
+     * Title/Role
+     * Social media links
+   - Initial circle styling:
+     * 40px diameter circle
+     * Light blue/gray background (#E5E7EB)
+     * Single letter centered
+     * Font-size: 18px, font-weight: 600, color: #000000
+   - Name styling:
+     * Font-size: 18px, font-weight: 700, color: #000000
+     * Margin-top: 16px
+   - Title/Role styling:
+     * Two lines: Role and Department/Specialty
+     * Font-size: 14px, color: #6B7280
+     * Line height: 1.5
+   - Social media links:
+     * LinkedIn and Twitter icons
+     * 20px size icons
+     * Centered in 32px square
+     * Light blue/gray background (#E5E7EB)
+     * Border-radius: 50%
+     * Margin-top: 16px
+     * 8px gap between icons
+
+6. TEAM MEMBERS CONTENT (exact text):
+   - Mark Quadros:
+     * Initial: M
+     * Role: Founder CEO
+   - Sarah Johnson:
+     * Initial: S
+     * Role: SEO Director
+   - Alex Chen:
+     * Initial: A
+     * Role: Link Strategy Lead
+   - Maria Rodriguez:
+     * Initial: M
+     * Role: Content Director
+   - David Kim:
+     * Initial: D
+     * Role: Client Success Lead
+   - Priya Patel:
+     * Initial: P
+     * Role: Content Strategist
+   - James Wilson:
+     * Initial: J
+     * Role: Technical SEO
+   - Emma Thompson:
+     * Initial: E
+     * Role: Outreach Specialist
+   - Michael Brown:
+     * Initial: M
+     * Role: Data Analyst
+
+7. PAGINATION:
+   - Centered at bottom of page
+   - 6 numbered buttons (1-6)
+   - Active button (1) with black border
+   - Inactive buttons with light gray border
+   - All buttons: 36px × 36px square, 1px border, border-radius: 6px
+   - 8px spacing between buttons
+   - Font-size: 14px, font-weight: 500
+   - Margin-top: 32px
+
+8. TYPOGRAPHY SPECIFICATIONS:
+   - Heading font: System font stack with sans-serif fallback
+   - Body font: System font stack with sans-serif fallback
+   - "Our Team" page title: 32px, weight 800
+   - Subtitle: 16px, weight 400
+   - Team member names: 18px, weight 700
+   - Team member roles: 14px, weight 400
+   - Navigation items: 16px, weight 500 (600 for active)
+   - Sidebar menu: 16px, weight 400 (600 for active)
+   - Consistent line heights: 1.5 for body text, 1.2 for headings
+
+9. COLOR SPECIFICATIONS:
+   - Primary background: #FFFFFF (white)
+   - Page background: #F9FAFB (light gray)
+   - Primary text: #000000 (black)
+   - Secondary text: #6B7280 (medium gray)
+   - Borders: #E5E7EB (light gray)
+   - Sidebar background: #000000 (black)
+   - Initial circles background: #F3F4F6 (light gray)
+   - Social icons background: #F3F4F6 (light gray)
+   - Active pagination: #000000 border
+   - Inactive pagination: #E5E7EB border
+
+10. SPACING SPECIFICATIONS:
+    - Page container padding: 32px
+    - Gap between team member cards: 16px
+    - Team member card padding: 24px
+    - Space between team member initial and name: 16px
+    - Space between name and role: 4px
+    - Space between role and social icons: 16px
+    - Space between content and pagination: 32px
+    - Sidebar item padding: 16px
+    - Space between header and team grid: 24px
+
+11. RESPONSIVE BEHAVIOR:
+    - Team grid should adapt to different screen sizes:
+      * Desktop (>1024px): 3 columns
+      * Tablet (768px-1024px): 2 columns
+      * Mobile (<768px): 1 column
+    - Sidebar should collapse to a dropdown or horizontal menu on mobile
+    - Card sizes should adjust to maintain proper spacing
+    - Typography should remain legible at all sizes
+
+12. INTERACTIVE ELEMENTS:
+    - Team member cards should have subtle hover effect (slight shadow increase)
+    - Social media icons should have hover effect (slight color change)
+    - Sidebar menu items should have hover effect (slight opacity change for inactive items)
+    - Pagination buttons should have hover effect
+    - Navigation links should have hover effect
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshot. The About Us page should maintain the same visual style and branding as the rest of the website, with special attention to typography, spacing, and color consistency.

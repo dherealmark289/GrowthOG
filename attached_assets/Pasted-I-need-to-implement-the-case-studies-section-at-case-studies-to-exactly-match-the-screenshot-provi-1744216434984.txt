@@ -1,0 +1,173 @@
+I need to implement the case studies section at /case-studies/ to exactly match the screenshot provided. Please follow these precise specifications:
+
+1. MAIN CASE STUDIES PAGE (/case-studies/):
+   - Main container: 100% width, max-width: 1200px, centered
+   - Border: 1px solid #E5E7EB, border-radius: 12px
+   - Background-color: #FFFFFF
+   - Padding: 32px
+   - Page background: #F9FAFB (light gray)
+
+2. HEADER SECTION:
+   - "Case Studies" heading: font-size: 36px, font-weight: 800, color: #000000
+   - Subheading "Real results for B2B SaaS companies at every growth stage": font-size: 16px, font-weight: 400, color: #6B7280
+   - Spacing between heading and subheading: 8px
+   - Spacing between subheading and filter bar: 24px
+
+3. FILTER BAR:
+   - Full width container with joined components
+   - Height: 48px with 1px solid #E5E7EB border, border-radius: 6px
+   - Left section: "Filter by:" label - font-size: 14px, font-weight: 600, color: #000000, padding-left: 16px
+   - Four dropdowns: "Company Stage", "Link Strategy", "Industry", "Results"
+   - Dropdown styling:
+     * Font-size: 14px, color: #000000
+     * Border-right: 1px solid #E5E7EB between dropdowns
+     * Small down-arrow icon for each
+     * Proper padding: 12px 16px for each dropdown
+   - Right section: "Reset Filters" button - light gray background, 14px font
+
+4. CASE STUDIES TABLE:
+   - Full width table with columns: Client, Traffic Increase, Links Built, Timeframe, Actions
+   - Table header styling:
+     * Background-color: #F9FAFB (very light gray)
+     * Font-size: 14px, font-weight: 600, color: #000000
+     * Text alignment: Left for "Client", center for other columns
+     * Padding: 12px 16px
+     * Border-top-left-radius: 6px
+     * Border-top-right-radius: 6px
+     * Border: 1px solid #E5E7EB
+
+5. CASE STUDY ROWS:
+   - White background (#FFFFFF)
+   - Border-left: 1px solid #E5E7EB
+   - Border-right: 1px solid #E5E7EB
+   - Border-bottom: 1px solid #E5E7EB
+   - Cell padding: 16px
+   - Row height: 72px exactly
+
+6. CLIENT COLUMN:
+   - Left alignment
+   - Company abbreviation box:
+     * Width: 32px, height: 32px
+     * Border-radius: 4px
+     * Background color varies by client (use colors from screenshot)
+     * Text: White, 14px, bold, centered
+   - Company name:
+     * Font-size: 16px, font-weight: 600, color: #000000
+   - Industry/category:
+     * Font-size: 13px, font-weight: 400, color: #6B7280
+   - Layout: Flex with 12px gap between abbreviation box and text
+
+7. TRAFFIC INCREASE COLUMN:
+   - Center alignment for percentage
+   - Traffic metrics right-aligned under percentage
+   - Percentage: Font-size: 18px, font-weight: 700, color: #000000
+   - Traffic metrics: Font-size: 13px, color: #6B7280 (e.g., "9K → 26K")
+
+8. LINKS BUILT COLUMN:
+   - Center alignment
+   - Single number
+   - Font-size: 18px, font-weight: 700, color: #000000
+
+9. TIMEFRAME COLUMN:
+   - Center alignment
+   - Text: "[number] months"
+   - Font-size: 15px, font-weight: 500, color: #000000
+
+10. ACTIONS COLUMN:
+    - Center alignment
+    - "View Case" button:
+      * Background-color: #000000
+      * Color: #FFFFFF
+      * Font-size: 14px, font-weight: 500
+      * Padding: 8px 16px
+      * Border-radius: 4px
+    - "Coming Soon" button:
+      * Background-color: #FFFFFF
+      * Border: 1px solid #E5E7EB
+      * Color: #6B7280
+      * Font-size: 14px, font-weight: 500
+      * Padding: 8px 16px
+      * Border-radius: 4px
+
+11. HOVER EFFECTS:
+    - Case study rows with "View Case" buttons should have hover effect:
+      * Subtle background color change (#F9FAFB)
+      * Slight box-shadow: 0 2px 4px rgba(0,0,0,0.05)
+      * Transition: all 0.2s ease
+    - Only apply hover effect to rows with "View Case" buttons, not to "Coming Soon" rows
+    - "View Case" button hover:
+      * Slightly darker background (#111111)
+      * Transition: all 0.2s ease
+
+12. PAGINATION:
+    - Pagination container: Centered, margin-top: 32px
+    - Pagination buttons: Width: 36px, height: 36px, border: 1px solid #E5E7EB, border-radius: 6px
+    - Active pagination: Background-color: #000000, color: #FFFFFF
+    - Inactive pagination: Background-color: #FFFFFF, color: #000000
+    - Font-size: 14px, font-weight: 500
+    - Spacing between pagination buttons: 8px
+
+13. CASE STUDY DETAIL PAGES (/case-studies/saas and /case-studies/fintech):
+    - Header section:
+      * Black background (#000000)
+      * White text (#FFFFFF)
+      * Title: font-size: 36px, font-weight: 800
+      * Subtitle: font-size: 18px, font-weight: 400
+      * Padding: 48px 32px
+    - Content section:
+      * White background (#FFFFFF)
+      * Black text (#000000)
+      * Body text: font-size: 16px, line-height: 1.6, color: #374151
+      * Headings: font-size: 24px, font-weight: 700, color: #000000
+      * Subheadings: font-size: 20px, font-weight: 600, color: #000000
+      * Padding: 32px
+    - Images:
+      * Full width, max-width: 800px
+      * Maintain original colors (not black and white)
+      * Border-radius: 8px
+      * Margin: 24px 0
+    - Metrics sections:
+      * Highlight boxes with key metrics
+      * Background: #F9FAFB
+      * Border: 1px solid #E5E7EB
+      * Border-radius: 8px
+      * Padding: 24px
+      * Metric value: font-size: 32px, font-weight: 800, color: #000000
+      * Metric label: font-size: 16px, font-weight: 500, color: #6B7280
+    - "Back to Case Studies" button:
+      * Positioned at top of page
+      * Left arrow icon
+      * Font-size: 14px, color: #2563EB
+      * Margin-bottom: 24px
+
+14. SPECIFIC CASE STUDY LINKS:
+    - SaaS Company case study button should link to: /case-studies/saas
+    - Fintech Startup case study button should link to: /case-studies/fintech
+    - Ensure all other case studies with "Coming Soon" buttons remain non-clickable
+
+15. CASE STUDY CONTENT STRUCTURE:
+    - Challenge section:
+      * Problem statement
+      * Client goals
+      * Initial metrics
+    - Approach section:
+      * Strategy overview
+      * Implementation details
+      * Methods used
+    - Results section:
+      * Key performance metrics
+      * Before/after comparisons
+      * Percentage improvements
+    - Testimonial section (if applicable):
+      * Client quote
+      * Name and position of client contact
+
+16. RESPONSIVE DESIGN:
+    - Table should adapt to different screen sizes:
+      * On mobile, convert to card-based layout
+      * Each case study becomes a self-contained card
+      * Stack all information vertically
+    - Ensure all text remains readable on all devices
+    - Maintain proper spacing and padding on mobile
+
+Please implement these changes with pixel-perfect accuracy to match the provided screenshot. The case studies page should maintain the black and white theme as specified, with colored images and company abbreviation boxes for visual accent.
