@@ -122,6 +122,12 @@ export default function CaseStudies() {
     }
   ];
 
+  // Map internal IDs to exact WordPress slugs for live routes
+  const slugMap = {
+    saas: '182-traffic-growth-and-195-increase-in-organic-keywords-in-18-months',
+    fintech: 'the-24-link-strategy-that-drove-48-traffic-growth',
+  };
+
   // Add additional fields to case studies for filtering
   const enhancedCaseStudies = caseStudies.map(study => {
     const stageMap = {
@@ -222,7 +228,8 @@ export default function CaseStudies() {
   // Handle row click
   const handleRowClick = (study) => {
     if (study.status === 'completed') {
-      router.push(`/case-studies/${study.id}`);
+      const slug = slugMap[study.id] || study.id;
+      router.push(`/case-studies/${slug}`);
     }
   };
 
@@ -479,7 +486,7 @@ export default function CaseStudies() {
                       <div className="flex flex-col justify-end">
                         {study.status === 'completed' ? (
                           <Link 
-                            href={`/case-studies/${study.id}`}
+                            href={`/case-studies/${slugMap[study.id] || study.id}`}
                             className="px-4 py-[6px] bg-black text-white text-[14px] font-medium rounded-[4px] text-center hover:bg-[#111111] transition-colors duration-200 ease-in-out w-full"
                             onClick={(e) => e.stopPropagation()}
                           >
@@ -528,7 +535,7 @@ export default function CaseStudies() {
                   <div className="hidden md:flex items-center justify-center h-[72px]">
                     {study.status === 'completed' ? (
                       <Link 
-                        href={`/case-studies/${study.id}`}
+                        href={`/case-studies/${slugMap[study.id] || study.id}`}
                         className="px-4 py-[6px] bg-black text-white text-[14px] font-medium rounded-[4px] hover:bg-[#111111] transition-colors duration-200 ease-in-out"
                         onClick={(e) => e.stopPropagation()}
                       >
