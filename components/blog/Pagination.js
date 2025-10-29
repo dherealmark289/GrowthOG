@@ -13,13 +13,13 @@ const Pagination = ({ totalPages = 6, currentPage = 1 }) => {
       case 2:
         return '/services';
       case 3:
-        return '/case-studies';
-      case 4:
         return '/pricing';
-      case 5:
-        return '/about-us';
-      case 6:
+      case 4:
         return '/resources';
+      case 5:
+        return '/case-studies';
+      case 6:
+        return '/about-us';
       default:
         return `/page/${pageNum}`;
     }

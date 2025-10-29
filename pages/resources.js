@@ -462,15 +462,15 @@ export default function Resources() {
               className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
               2
             </Link>
-            <Link href="/case-studies"
+            <Link href="/pricing"
               className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
               3
             </Link>
-            <Link href="/pricing"
-              className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+            <Link href="/resources"
+              className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] bg-black border-[2.5px] border-black text-[14px] font-medium text-white">
               4
             </Link>
-            <Link href="/resources"
+            <Link href="/case-studies"
               className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
               5
             </Link>

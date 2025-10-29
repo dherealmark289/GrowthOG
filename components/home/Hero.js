@@ -38,12 +38,20 @@ const Hero = () => {
           
           {/* CTAs */}
           <div className="mt-8 md:mt-12">
-            <Link 
-              href="/auth/" 
-              className="border-[2.5px] border-black rounded-[6px] px-6 py-3 text-[16px] font-semibold text-black hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-200 inline-block w-full sm:w-auto text-center"
-            >
-              Build My Link Pipeline
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <Link 
+                href="/auth/" 
+                className="border-[2.5px] border-black rounded-[6px] px-6 py-3 text-[16px] font-semibold text-black hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-200 inline-block w-full sm:w-auto text-center"
+              >
+                Build My Link Pipeline
+              </Link>
+              <Link 
+                href="/testimony" 
+                className="border-[2.5px] border-black rounded-[6px] px-6 py-3 text-[16px] font-semibold text-black hover:bg-[rgba(0,0,0,0.05)] transition-colors duration-200 inline-block w-full sm:w-auto text-center"
+              >
+                Testimony
+              </Link>
+            </div>
             
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 mt-6 sm:mt-8">
               <Link 

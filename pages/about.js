@@ -167,16 +167,16 @@ export default function About() {
               <Link href="/services" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
                 2
               </Link>
-              <Link href="/case-studies" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
+              <Link href="/pricing" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
                 3
               </Link>
-              <Link href="/pricing" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
+              <Link href="/resources" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
                 4
               </Link>
-              <Link href="/resources" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
+              <Link href="/case-studies" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-white text-sm font-medium text-secondary-700 hover:bg-secondary-50">
                 5
               </Link>
-              <Link href="/about" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-black text-sm font-medium text-white">
+              <Link href="/about-us" className="relative inline-flex items-center px-4 py-2 border-[2.5px] border-black bg-black text-sm font-medium text-white">
                 6
               </Link>
             </nav>

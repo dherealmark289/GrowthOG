@@ -1,20 +1,22 @@
 import React from 'react';
 import { testimonials } from '../../lib/mockData';
 
-const Testimonials = () => {
+const Testimonials = ({ hideHeader = false }) => {
   return (
     <div className="bg-secondary-50 py-24">
       <div className="container-custom">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl">
-            What Our Clients Say
-          </h2>
-          <p className="mt-4 text-lg text-secondary-600">
-            Don't just take our word for it. Here's what our clients have to say about working with GrowthOG.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-secondary-900 sm:text-4xl">
+              What Our Clients Say
+            </h2>
+            <p className="mt-4 text-lg text-secondary-600">
+              Don't just take our word for it. Here's what our clients have to say about working with GrowthOG.
+            </p>
+          </div>
+        )}
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className={`grid gap-8 md:grid-cols-2 lg:grid-cols-3 ${hideHeader ? '' : 'mt-16'}`}>
           {testimonials.map((testimonial) => (
             <div 
               key={testimonial.id} 

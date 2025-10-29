@@ -172,16 +172,30 @@ export default function AboutUs() {
                 {/* Pagination */}
                 <div className="flex justify-center mt-8">
                   <div className="flex space-x-2">
-                    {paginationItems.map((page) => (
-                      <button
-                        key={page}
-                        className={`w-9 h-9 flex items-center justify-center rounded-md border ${
-                          page === 1 ? 'border-black' : 'border-[#E5E7EB]'
-                        } text-[14px] font-medium hover:bg-gray-50`}
-                      >
-                        {page}
-                      </button>
-                    ))}
+                    <Link href="/" 
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+                      1
+                    </Link>
+                    <Link href="/services"
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+                      2
+                    </Link>
+                    <Link href="/pricing"
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+                      3
+                    </Link>
+                    <Link href="/resources"
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+                      4
+                    </Link>
+                    <Link href="/case-studies"
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] border-[2.5px] border-black text-[14px] font-medium text-black hover:bg-gray-50">
+                      5
+                    </Link>
+                    <Link href="/about-us"
+                      className="w-[36px] h-[36px] flex items-center justify-center rounded-[6px] bg-black border-[2.5px] border-black text-[14px] font-medium text-white">
+                      6
+                    </Link>
                   </div>
                 </div>
               </div>
