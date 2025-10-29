@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '../../context/AuthContext';
 import BookStrategyCallModal from '../BookStrategyCallModal';
 
@@ -59,13 +60,25 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="py-4 border-b-[2.5px] border-black relative z-30">
+      <nav className="py-1 border-b-[2.5px] border-black relative z-30">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <Link href="/" className="text-black font-semibold text-xl w-[140px] inline-block">
-                GrowthOG
+              <Link href="/" className="inline-block">
+                <div className="relative" style={{ height: 'auto', width: 'auto' }}>
+                  <Image
+                    src="/images/case-studies/logo-1.png"
+                    alt="GrowthOG"
+                    width={70}
+                    height={20}
+                    className="object-contain"
+                    priority
+                    style={{
+                      backgroundColor: 'transparent',
+                    }}
+                  />
+                </div>
               </Link>
             </div>
 

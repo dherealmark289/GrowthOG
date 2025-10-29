@@ -76,7 +76,10 @@ const Layout = ({ children, seo = {} }) => {
         <meta name="twitter:image" content={mergedSEO.openGraph?.images?.[0]?.url || defaultSEO.openGraph.images[0].url} />
         
         {/* Favicons */}
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/case-studies/logo-1.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/case-studies/logo-1.png" />
+        <link rel="shortcut icon" href="/images/case-studies/logo-1.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/case-studies/logo-1.png" />
         
         {/* Preconnect to headless WordPress domain for faster loading */}
         <link rel="preconnect" href="https://headlesswp.growthog.com" />

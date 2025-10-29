@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -108,8 +109,14 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row md:justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <Link href="/" className="text-black font-bold text-xl">
-                GrowthOG
+              <Link href="/" className="inline-block mb-2">
+                <Image
+                  src="/images/case-studies/logo-1.png"
+                  alt="GrowthOG"
+                  width={140}
+                  height={40}
+                  className="object-contain"
+                />
               </Link>
               <p className="mt-2 text-sm text-gray-500">
                 Operated by: BeZen business Ltd.<br />
