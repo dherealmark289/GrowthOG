@@ -1,15 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Layout from '../components/layout/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
-import { fetchBlogPosts } from '../lib/wordpress';
+import { fetchBlogPosts, formatWordPressPosts } from '../lib/wordpress';
 
-export default function Resources({ initialArticles = [] }) {
+export default function Resources() {
   const [activeTab, setActiveTab] = useState('Blog'); // Default to Blog tab
   const [selectedTopics, setSelectedTopics] = useState('All Topics');
   const [selectedStage, setSelectedStage] = useState('SaaS Stage');
   const [selectedContentType, setSelectedContentType] = useState('Content Type');
   const [selectedDate, setSelectedDate] = useState('Date');
+  const [fetchedPosts, setFetchedPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const didLoad = useRef(false);
   
   // Handle tab changes
   const handleTabChange = (tab) => {
@@ -22,8 +25,54 @@ export default function Resources({ initialArticles = [] }) {
   const handleContentTypeChange = (e) => setSelectedContentType(e.target.value);
   const handleDateChange = (e) => setSelectedDate(e.target.value);
   
-  // Articles sourced from WordPress (server-side)
-  const articlesData = initialArticles;
+  // Client-side fetch: latest 6 posts
+  useEffect(() => {
+    if (didLoad.current) return;
+    didLoad.current = true;
+    (async () => {
+      try {
+        setLoading(true);
+        const { posts } = await fetchBlogPosts(1, 6);
+        const formatted = formatWordPressPosts(posts || []);
+        setFetchedPosts(formatted);
+      } catch (e) {
+        setFetchedPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  const stripTags = (html) => {
+    if (!html) return '';
+    return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+  };
+
+  const formatDate = (iso) => {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    } catch (_) {
+      return '';
+    }
+  };
+
+  const articlesData = (fetchedPosts || []).map((p) => {
+    const excerptFull = stripTags(p.excerpt || '');
+    const excerpt = excerptFull.length > 180 ? `${excerptFull.slice(0, 177)}...` : excerptFull;
+    const href = p.path ? p.path : `/${p.wpSlug || p.slug}`;
+    return {
+      id: p.id,
+      category: 'LINK BUILDING',
+      title: p.title,
+      excerpt,
+      author: p.author || 'GrowthOG Team',
+      date: formatDate(p.date),
+      rawDate: p.date,
+      authorImage: '/user-avatar.png',
+      href,
+    };
+  });
 
   // Filter articles based on selected filters
   const filterArticles = () => {
@@ -272,7 +321,12 @@ export default function Resources({ initialArticles = [] }) {
 
                       {/* Articles Grid */}
                       <div className="grid md:grid-cols-2 gap-6">
-                        {articles.map(article => (
+                        {loading ? (
+                          <div className="col-span-2 flex justify-center py-10">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+                          </div>
+                        ) : (
+                        articles.map(article => (
                           <div 
                             key={article.id} 
                             className="border-[2.5px] border-black rounded-[8px] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_6px_rgba(0,0,0,0.05)] transition-shadow duration-200"
@@ -297,7 +351,8 @@ export default function Resources({ initialArticles = [] }) {
                               <span className="text-[13px] text-[#6B7280]">• {article.date}</span>
                             </div>
                           </div>
-                        ))}
+                        ))
+                        )}
                       </div>
                     </div>
                   </>
@@ -414,61 +469,4 @@ export default function Resources({ initialArticles = [] }) {
 }
 
 // Server-side fetch: get 6 latest posts from WordPress "link-building-blog"
-export async function getServerSideProps() {
-  try {
-    const { posts } = await fetchBlogPosts(1, 6);
-
-    const stripTags = (html) => {
-      if (!html) return '';
-      return html
-        .replace(/<[^>]*>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-    };
-
-    const formatDate = (iso) => {
-      try {
-        const d = new Date(iso);
-        return d.toLocaleDateString('en-US', {
-          year: 'numeric', month: 'long', day: 'numeric'
-        });
-      } catch (_) {
-        return '';
-      }
-    };
-
-    const initialArticles = (posts || []).map((post) => {
-      const title = stripTags(post?.title?.rendered || '');
-      const excerptFull = stripTags(post?.excerpt?.rendered || '');
-      const excerpt = excerptFull.length > 180 ? `${excerptFull.slice(0, 177)}...` : excerptFull;
-      const author = post?._embedded?.author?.[0]?.name || 'GrowthOG Team';
-      const dateIso = post?.date || '';
-      // derive internal slug to match dynamic route /[slug]
-      let wpSlug = post?.slug || '';
-      try {
-        if (post?.link) {
-          const u = new URL(post.link);
-          const segs = u.pathname.split('/').filter(Boolean);
-          if (segs.length) wpSlug = segs[segs.length - 1];
-        }
-      } catch (_) {}
-
-      return {
-        id: post?.id || Math.random().toString(36).slice(2),
-        category: 'LINK BUILDING',
-        title,
-        excerpt,
-        author,
-        date: formatDate(dateIso),
-        rawDate: dateIso,
-        authorImage: '/user-avatar.png',
-        url: post?.link || '#',
-        href: `/${wpSlug}`
-      };
-    });
-
-    return { props: { initialArticles } };
-  } catch (e) {
-    return { props: { initialArticles: [] } };
-  }
-}
+// (Removed SSR; using client-side fetch to mirror blog list behavior)
