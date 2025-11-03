@@ -2,8 +2,9 @@ import { useState } from 'react';
 import Layout from '../components/layout/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
+import { fetchBlogPosts } from '../lib/wordpress';
 
-export default function Resources() {
+export default function Resources({ initialArticles = [] }) {
   const [activeTab, setActiveTab] = useState('Blog'); // Default to Blog tab
   const [selectedTopics, setSelectedTopics] = useState('All Topics');
   const [selectedStage, setSelectedStage] = useState('SaaS Stage');
@@ -21,81 +22,8 @@ export default function Resources() {
   const handleContentTypeChange = (e) => setSelectedContentType(e.target.value);
   const handleDateChange = (e) => setSelectedDate(e.target.value);
   
-  // Predefined article data to match the reference screenshot
-  const articlesData = [
-    {
-      id: 1,
-      category: 'LINK BUILDING',
-      title: 'Top Linkable Assets That Drive Quality Backlinks for Your Strategy',
-      excerpt: 'Even if you produce high-quality content on your website, there is no guarantee that it will receive external backlinks. While it is not impossible, there are ways to...',
-      author: 'Barbara Manuel',
-      date: 'March 15, 2025',
-      rawDate: '2025-03-15',
-      stage: 'Growth Stage',
-      contentType: 'Guide',
-      authorImage: '/user-avatar.png'
-    },
-    {
-      id: 2,
-      category: 'LINK BUILDING',
-      title: 'Bad Backlinks: Identify, Remove, and Protect Your Site\'s SEO Health',
-      excerpt: 'Bad backlinks can severely damage your SEO, dragging down ranking potential and exposing your site to penalties. Whether from malicious sources or low-quality domains, these harmful links...',
-      author: 'Barbara Manuel',
-      date: 'March 16, 2025',
-      rawDate: '2025-03-16',
-      stage: 'Mature Stage',
-      contentType: 'Case Study',
-      authorImage: '/user-avatar.png'
-    },
-    {
-      id: 3,
-      category: 'LINK BUILDING',
-      title: 'Top Link Building Strategies to Boost Your SEO Results in 2025',
-      excerpt: 'Creating compelling content is an undeniable challenge, yet the real uphill battle begins when you try to secure links to it. Building links can be a...',
-      author: 'Mark Danielle',
-      date: 'November 5, 2024',
-      rawDate: '2024-11-05',
-      stage: 'Early Stage',
-      contentType: 'Article',
-      authorImage: '/user-avatar.png'
-    },
-    {
-      id: 4,
-      category: 'LINK BUILDING',
-      title: 'Relevant Backlinks: The Ultimate Guide to Build Contextual Backlinks in 2025',
-      excerpt: 'Have you ever wondered why some websites consistently maintain their rankings on search engine results pages (SERPs) while others struggle? The secret...',
-      author: 'Russell Simale',
-      date: 'November 5, 2024',
-      rawDate: '2024-11-05',
-      stage: 'Growth Stage',
-      contentType: 'Guide',
-      authorImage: '/user-avatar.png'
-    },
-    {
-      id: 5,
-      category: 'LINK BUILDING',
-      title: 'The Ultimate Guide to Mastering Link Building Outreach in 2025',
-      excerpt: 'In 2025, link building remains a powerhouse for online growth, with 43% of SEO experts naming it as their top strategy for success. But mastering link...',
-      author: 'Barbara Manuel',
-      date: 'November 3, 2024',
-      rawDate: '2024-11-03',
-      stage: 'Mature Stage',
-      contentType: 'Article',
-      authorImage: '/user-avatar.png'
-    },
-    {
-      id: 6,
-      category: 'LINK BUILDING',
-      title: 'What Are Sitewide Links? (+ Their Impact on SEO)',
-      excerpt: 'Sitewide links—those recurring hyperlinks found in a website\'s footer, sidebar, or navigation—can either be a golden ticket for boosting your site\'s ranking visibility, or Th...',
-      author: 'Russell Simale',
-      date: 'February 28, 2025',
-      rawDate: '2025-02-28',
-      stage: 'Early Stage',
-      contentType: 'Webinar',
-      authorImage: '/user-avatar.png'
-    }
-  ];
+  // Articles sourced from WordPress (server-side)
+  const articlesData = initialArticles;
 
   // Filter articles based on selected filters
   const filterArticles = () => {
@@ -353,9 +281,9 @@ export default function Resources() {
                               {article.category}
                             </div>
                             <h3 className="text-[18px] font-bold text-black leading-[1.3] mb-3">
-                              <a href="#" className="hover:text-[#2563EB]">
+                              <Link href={article.href || '#'} className="hover:text-[#2563EB]">
                                 {article.title}
-                              </a>
+                              </Link>
                             </h3>
                             <p className="text-[15px] text-[#4B5563] leading-[1.5] mb-4">
                               {article.excerpt}
@@ -483,4 +411,64 @@ export default function Resources() {
       </div>
     </Layout>
   );
+}
+
+// Server-side fetch: get 6 latest posts from WordPress "link-building-blog"
+export async function getServerSideProps() {
+  try {
+    const { posts } = await fetchBlogPosts(1, 6);
+
+    const stripTags = (html) => {
+      if (!html) return '';
+      return html
+        .replace(/<[^>]*>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const formatDate = (iso) => {
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString('en-US', {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+      } catch (_) {
+        return '';
+      }
+    };
+
+    const initialArticles = (posts || []).map((post) => {
+      const title = stripTags(post?.title?.rendered || '');
+      const excerptFull = stripTags(post?.excerpt?.rendered || '');
+      const excerpt = excerptFull.length > 180 ? `${excerptFull.slice(0, 177)}...` : excerptFull;
+      const author = post?._embedded?.author?.[0]?.name || 'GrowthOG Team';
+      const dateIso = post?.date || '';
+      // derive internal slug to match dynamic route /[slug]
+      let wpSlug = post?.slug || '';
+      try {
+        if (post?.link) {
+          const u = new URL(post.link);
+          const segs = u.pathname.split('/').filter(Boolean);
+          if (segs.length) wpSlug = segs[segs.length - 1];
+        }
+      } catch (_) {}
+
+      return {
+        id: post?.id || Math.random().toString(36).slice(2),
+        category: 'LINK BUILDING',
+        title,
+        excerpt,
+        author,
+        date: formatDate(dateIso),
+        rawDate: dateIso,
+        authorImage: '/user-avatar.png',
+        url: post?.link || '#',
+        href: `/${wpSlug}`
+      };
+    });
+
+    return { props: { initialArticles } };
+  } catch (e) {
+    return { props: { initialArticles: [] } };
+  }
 }
